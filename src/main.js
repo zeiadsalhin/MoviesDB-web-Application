@@ -19,7 +19,17 @@ const vuetify = createVuetify({
     directives,
     theme: {
         defaultTheme: localStorage.getItem("data-theme") || 'light',
-    }
+    },
+    display: {
+        mobileBreakpoint: 'xl',
+        thresholds: {
+            xs: 0,
+            sm: 340,
+            md: 540,
+            lg: 800,
+            xl: 1280,
+        },
+    },
 })
 
 const app = createApp(App)

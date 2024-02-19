@@ -1,85 +1,165 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import { ref } from "vue"
+import { useTheme } from 'vuetify/lib/framework.mjs';
+import { onMounted } from 'vue';
+import footer1 from "./components/footer.vue"
+
+
+//set automatic theme
+onMounted(() => {
+  if (!localStorage.getItem("data-theme")) {
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      localStorage.setItem('data-theme', "dark");
+      document.documentElement.setAttribute('data-theme', "dark");
+    } else {
+      localStorage.setItem('data-theme', "light");
+      document.documentElement.setAttribute('data-theme', "light");
+    }
+  }
+})
+
+const theme = ref(false)
+const themelook = useTheme()
+
+function changetheme() {
+
+  theme.value = !theme.value
+  themelook.global.name.value = theme.value ? "dark" : "light"
+  document.documentElement.setAttribute('data-theme', themelook.global.name.value);
+  localStorage.setItem('data-theme', themelook.global.name.value);
+}
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+  <!--Desktop-->
+  <v-layout class="text-2xl">
+    <v-navigation-drawer v-model="drawer" :rail="rail" :permanent="mobile != mobile">
+      <v-list-item prepend-avatar="https://randomuser.me/api/portraits/men/13.jpg" :title="'Hello, ' + Accinfo.username"
+        nav>
+        <template v-slot:append>
+          <v-btn variant="text" icon="mdi-chevron-left" @click.stop="rail = !rail"></v-btn>
+        </template>
+      </v-list-item>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+      <v-divider></v-divider>
 
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
+      <v-list density="default" na>
+        <v-list-item prepend-icon="mdi-home" title="Home" value="home" to="/"></v-list-item>
+        <v-list-item prepend-icon="mdi-account" title="My Account" value="account" to="/"></v-list-item>
+        <v-list-item prepend-icon="mdi-filmstrip" title="Latest Movies" value="movies" to="/"></v-list-item>
+        <v-list-item prepend-icon="mdi-star-circle  " title="Top Movies" value="moviestop" to="/"></v-list-item>
+        <v-list-item prepend-icon="mdi-heart" title="Favorites" value="moviestop" to="/"></v-list-item>
+        <v-list-item prepend-icon="mdi-list-box" title="My list" value="moviestop" to="/"></v-list-item>
+        <v-list-item prepend-icon="mdi-star" title="Rated Movies" value="moviestop" to="/"></v-list-item>
+        <v-list-item prepend-icon="mdi-clock" title="Watchlist Movies" value="moviestop" to="/"></v-list-item>
+        <v-list-item v-if="rail" prepend-icon="mdi-chevron-right" title="" value="expand"
+          @click.stop="rail = !rail"></v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+    <v-main class=" align-center justify-center" style="min-height: 300px;">
+      <v-toolbar density="default">
 
-  <RouterView />
+        <v-app-bar-nav-icon v-if="!$vuetify.display.mobile" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+        <v-toolbar-title><router-link to="/">Home</router-link></v-toolbar-title>
+        <!-- <v-spacer></v-spacer> -->
+        <v-btn icon @Click="changetheme">
+          <v-icon :icon="theme ? 'mdi-weather-night' : 'mdi-weather-sunny'"></v-icon>
+        </v-btn>
+        <v-btn to="/" class="m-2 ">
+          <v-icon icon="mdi-magnify"></v-icon>Search
+        </v-btn>
+      </v-toolbar>
+      <v-fade-transition>
+        <RouterView />
+      </v-fade-transition>
+      <footer1 />
+
+    </v-main>
+  </v-layout>
+
+  <!--mobile-->
+
+  <v-layout class="overflow-visible" style="height: 56px;">
+    <v-bottom-navigation v-model="value" color="gray" horizontal v-if="$vuetify.display.mobile">
+
+      <v-btn to="/">
+        <v-icon>mdi-home</v-icon>
+        Home
+      </v-btn>
+
+      <v-btn to="/">
+        <v-icon>mdi-filmstrip</v-icon>
+        Movies
+      </v-btn>
+
+      <v-btn to="/">
+        <v-icon>mdi-heart</v-icon>
+        Favorites
+      </v-btn>
+
+      <v-btn to="/">
+        <v-icon>mdi-account</v-icon>
+        Account
+      </v-btn>
+
+    </v-bottom-navigation>
+  </v-layout>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      drawer: true,
+      rail: true,
+      value: 1,
+      Accinfo: [],
+    }
+  },
+  mounted() {
+    console.log(this.$vuetify.display.mobile)
+    this.random();
+  },
+  methods: {
+    async random() {
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
+      try {
+        this.isloading = true;
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
+        const options = {
+          method: 'GET',
+          headers: {
+            accept: 'application/json',
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0MmZhYmU3Y2YwZjE1ZmM2NzcwNDI5NTU4NjQ1MmYyMyIsInN1YiI6IjY1ZDJjY2QwZTA0ZDhhMDE3Yzk4NjkxNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.lHtAcwN2dmtg-x6Lw1yqU6bBCGPAceThYLxJyyXbVZU'
+          }
+        };
+        const url = ("https://api.themoviedb.org/3/account/21017366")
+        const response = await fetch(url, options)
+        const data = await response.json()
+        console.log(data)
+        this.Accinfo = data
+        // this.isloading = false
+      } catch (error) {
+        console.error(error);
+      }
 
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
+    },
   }
 }
-</style>
+
+
+
+
+
+
+
+
+
+const items = [
+  { title: 'Message', icon: 'mdi-email' },
+  { title: 'Click Me', icon: 'mdi-email' },
+  { title: 'Click Me', icon: 'mdi-email' },
+  { title: 'Click Me 2', icon: 'mdi-email' },
+]
+</script>
+<style scoped></style>
