@@ -88,17 +88,17 @@ function changetheme() {
         Home
       </v-btn>
 
-      <v-btn to="/">
+      <v-btn to="/about">
         <v-icon>mdi-filmstrip</v-icon>
         Movies
       </v-btn>
 
-      <v-btn to="/">
+      <v-btn to="/favourites">
         <v-icon>mdi-heart</v-icon>
         Favorites
       </v-btn>
 
-      <v-btn to="/">
+      <v-btn to="/account">
         <v-icon>mdi-account</v-icon>
         Account
       </v-btn>

@@ -32,25 +32,36 @@
         <div v-else>
             <transition name="fade" mode="out-in">
                 <div :key="randomMovie.id" v-if="randomMovie"
-                    :style="{ backgroundImage: `linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.2)), url(https://image.tmdb.org/t/p/original${randomMovie.backdrop_path})` }"
-                    class="movie-item">
-                    <h3>{{ randomMovie.title }}</h3>
+                    :style="{ backgroundImage: `linear-gradient(to top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.0)),linear-gradient(to right, rgba(0, 0, 0, 2), rgba(0, 0, 0, 0)),linear-gradient(to right, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0)), url(https://image.tmdb.org/t/p/original${randomMovie.backdrop_path})` }"
+                    class="movie-item fade-in">
+                    <div class="text text-left ml-12 py-12 w-75">
+                        <p style="font-size: 2.1rem; margin-left: 0rem; margin-top: 6rem;" class="text-4 font-weight-bold">
+                            {{
+                                randomMovie.title }}</p>
+                        <div class="rate d-lg-flex" style="margin-left: 0rem;">
+                            <v-rating readonly :length="5" :size="32" :model-value="3" active-color="primary" />
+                            <h4 class="font-weight-thin mr-4" style="margin-left: 0rem; padding: 4px;">{{
+                                randomMovie.popularity }} Reviews
+                            </h4>
+                            <h4 class="font-weight-thin pa-1"> {{ randomMovie.vote_count }} Votes</h4>
+                            <h4 class="font-weight-thin pa-1"> {{ randomMovie.release_date }} Release-date</h4>
+                        </div>
+                        <p class="w-100 ">{{ randomMovie.overview.slice(0, 80) }}...</p>
+                    </div>
                     <!-- Display other movie information here -->
                 </div>
             </transition>
         </div>
     </div>
-    <button @click="random">Get</button>
+    <!-- <button @click="random">Get</button> -->
 </template>
 <script>
 export default {
     data() {
         return {
-            empty: false,
             isloading: false,
-            value1: '',
             Results: [],
-            displayLimit: 10,
+            displayLimit: 100,
             randomMovie: null,
         }
     },
@@ -58,6 +69,15 @@ export default {
         this.random();
     },
     methods: {
+        loadImage() {
+            const image = new Image();
+            image.src = `https://image.tmdb.org/t/p/original${this.randomMovie.backdrop_path}`;
+            image.addEventListener('load', () => {
+                this.isloading = false;
+                this.$refs.movieItem.style.opacity = 1;
+            });
+        },
+
         async random() {
 
             try {
@@ -83,23 +103,40 @@ export default {
             }
 
         },
+        watch: {
+            randomMovie() {
+                this.isloading = true;
+                this.$refs.movieItem.style.opacity = 0;
+                this.loadImage();
+            },
+        },
     }
 }
 </script>
 <style>
 .movie-item {
 
-    width: 100vw;
-    height: 70vh;
+    width: 100%;
+    height: 75vh;
+    background-position: center;
     background-size: cover;
     background-blend-mode: multiply;
     /* Add other desired styles */
 }
 
-.dd {
-    width: 100%;
-    height: 50vh;
-    background-size: cover;
+.fade-in {
+    opacity: 0;
+    animation: fadeInAnimation 2s ease forwards;
+}
+
+@keyframes fadeInAnimation {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 .fade-enter-active,
