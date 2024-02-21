@@ -35,8 +35,7 @@ import footer1 from "./components/footer.vue"
   <!--Desktop-->
   <v-layout class="" color="black">
     <v-navigation-drawer v-model="drawer" :rail="rail" :permanent="mobile != mobile" color="black">
-      <v-list-item :prepend-avatar="`https://image.tmdb.org/t/p/w200${Accinfo.avatar.tmdb.avatar_path}`"
-        :title="'Hello, ' + Accinfo.name" nav>
+      <v-list-item :prepend-avatar="avatarsrc" :title="'Hello, ' + Accinfo.name" nav color="gray">
         <template v-slot:append>
           <v-btn variant="text" icon="mdi-chevron-left" @click.stop="rail = !rail"></v-btn>
         </template>
@@ -144,6 +143,8 @@ export default {
         const data = await response.json()
         console.log(data)
         this.Accinfo = data
+        this.avatarsrc = (`https://image.tmdb.org/t/p/w200${this.Accinfo.avatar.tmdb.avatar_path}`)
+        console.log(`https://image.tmdb.org/t/p/w200${this.Accinfo.avatar.tmdb.avatar_path}`)
         // this.isloading = false
       } catch (error) {
         console.error(error);
