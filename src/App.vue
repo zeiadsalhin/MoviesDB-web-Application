@@ -85,8 +85,8 @@ import footer1 from "./components/footer.vue"
 
   <!--mobile-->
 
-  <v-layout class="overflow-visible" style="height: 56px;">
-    <v-bottom-navigation v-model="value" color="black" horizontal v-if="$vuetify.display.mobile">
+  <v-layout class="overflow-visible" style="height: 56px;" color="black">
+    <v-bottom-navigation v-model="value" horizontal v-if="$vuetify.display.mobile">
 
       <v-btn to="/">
         <v-icon>mdi-home</v-icon>
@@ -106,11 +106,6 @@ import footer1 from "./components/footer.vue"
       <v-btn to="/account">
         <v-icon>mdi-account</v-icon>
         Account
-      </v-btn>
-
-      <v-btn to="/account">
-        <v-icon>mdi-information</v-icon>
-        About
       </v-btn>
 
     </v-bottom-navigation>
