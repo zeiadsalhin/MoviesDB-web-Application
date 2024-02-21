@@ -57,8 +57,8 @@ import footer1 from "./components/footer.vue"
           @click.stop="rail = !rail"></v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-main class=" align-center justify-center" style="min-height: 300px;" @Click="">
-      <v-toolbar density="default" color="black">
+    <v-main class=" align-center justify-center bg-black" style="min-height: 300px;" @Click="">
+      <v-toolbar density="default" class="absolute top-0 z-50 bg-transparent">
 
         <v-app-bar-nav-icon v-if="!$vuetify.display.mobile" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
         <v-spacer></v-spacer>
@@ -73,7 +73,7 @@ import footer1 from "./components/footer.vue"
 
       </v-toolbar>
       <v-text-field clearable v-if="search" variant="outlined" placeholder="Search"
-        class="absolute z-50 mx-auto flex justify-center w-full bg-black h-14"></v-text-field>
+        class="absolute z-50 min-w-full bg-black h-14"></v-text-field>
       <v-fade-transition>
         <RouterView />
       </v-fade-transition>
@@ -116,8 +116,8 @@ export default {
   data() {
     return {
       search: null,
-      drawer: true,
-      rail: true,
+      drawer: false,
+      rail: false,
       value: 1,
       Accinfo: [],
     }

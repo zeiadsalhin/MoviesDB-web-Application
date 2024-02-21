@@ -27,7 +27,7 @@
 
 
 
-    <div>
+    <div class="-mt-16">
         <div v-if="isloading" class="flex justify-center" style="height: 70vh;">
             <div class="load m-auto"><v-progress-circular indeterminate></v-progress-circular></div>
         </div>
@@ -37,7 +37,7 @@
                     :style="{ backgroundImage: `linear-gradient(to top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.0)),linear-gradient(to right, rgba(0, 0, 0, 2), rgba(0, 0, 0, 0)),linear-gradient(to right, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0)), url(https://image.tmdb.org/t/p/original${randomMovie.backdrop_path})` }"
                     class="movie-item fade-in"></div>
             </transition>
-            <div class="absolute md:top-20 top-52   text text-left md:ml-12 ml-5 py-12 w-75">
+            <div class="absolute md:top-20 top-40   text text-left md:ml-12 ml-5 py-12 w-75">
                 <p style="margin-left: 0rem; margin-top: 6rem;" class="md:text-4xl text-3xl  font-weight-bold">
                     {{
                         randomMovie.title }}</p>
