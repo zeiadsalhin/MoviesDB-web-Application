@@ -62,7 +62,7 @@ import footer1 from "./components/footer.vue"
 
         <v-app-bar-nav-icon v-if="!$vuetify.display.mobile" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
         <v-spacer></v-spacer>
-        <v-toolbar-title><img src="/logo.png" class="invert" width="30" alt=""></v-toolbar-title>
+        <v-toolbar-title><img src="/logo.png" class="bg-white" width="40" alt=""></v-toolbar-title>
         <!-- <v-spacer></v-spacer> -->
         <!-- <v-btn icon @Click="changetheme">
           <v-icon :icon="theme ? 'mdi-weather-night' : 'mdi-weather-sunny'"></v-icon>
