@@ -46,13 +46,13 @@ import footer1 from "./components/footer.vue"
 
       <v-list density="default" na>
         <v-list-item prepend-icon="mdi-home" title="Home" value="home" to="/"></v-list-item>
-        <v-list-item prepend-icon="mdi-account" title="My Account" value="account" to="/"></v-list-item>
+        <v-list-item prepend-icon="mdi-account" title="My Account" value="account" to="/account"></v-list-item>
         <v-list-item prepend-icon="mdi-filmstrip" title="Latest Movies" value="movies" to="/"></v-list-item>
         <v-list-item prepend-icon="mdi-star-circle  " title="Top Movies" value="moviestop" to="/"></v-list-item>
         <v-list-item prepend-icon="mdi-heart" title="Favorites" value="moviestop" to="/"></v-list-item>
         <v-list-item prepend-icon="mdi-list-box" title="My list" value="moviestop" to="/"></v-list-item>
         <v-list-item prepend-icon="mdi-star" title="Rated Movies" value="moviestop" to="/"></v-list-item>
-        <v-list-item prepend-icon="mdi-clock" title="Watchlist Movies" value="moviestop" to="/"></v-list-item>
+        <v-list-item prepend-icon="mdi-information" title="About" value="moviestop" to="/about"></v-list-item>
         <v-list-item v-if="rail" prepend-icon="mdi-chevron-right" title="" value="expand"
           @click.stop="rail = !rail"></v-list-item>
       </v-list>
@@ -61,8 +61,8 @@ import footer1 from "./components/footer.vue"
       <v-toolbar density="default" class="absolute top-0 z-50 bg-transparent">
 
         <v-app-bar-nav-icon v-if="!$vuetify.display.mobile" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-        <v-spacer></v-spacer>
-        <v-toolbar-title><img src="/logo.png" class="bg-white" width="40" alt=""></v-toolbar-title>
+        <!-- <v-spacer></v-spacer> -->
+        <v-toolbar-title><img src="/logo.png" class="bg-white md:mx-auto" width="40" alt=""></v-toolbar-title>
         <!-- <v-spacer></v-spacer> -->
         <!-- <v-btn icon @Click="changetheme">
           <v-icon :icon="theme ? 'mdi-weather-night' : 'mdi-weather-sunny'"></v-icon>
