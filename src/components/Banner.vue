@@ -28,29 +28,33 @@
 
 
     <div>
-        <div v-if="isloading">Loading...</div>
+        <div v-if="isloading" class="flex justify-center" style="height: 70vh;">
+            <div class="load m-auto"><v-progress-circular indeterminate></v-progress-circular></div>
+        </div>
         <div v-else>
             <transition name="fade" mode="out-in">
                 <div :key="randomMovie.id" v-if="randomMovie"
                     :style="{ backgroundImage: `linear-gradient(to top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.0)),linear-gradient(to right, rgba(0, 0, 0, 2), rgba(0, 0, 0, 0)),linear-gradient(to right, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0)), url(https://image.tmdb.org/t/p/original${randomMovie.backdrop_path})` }"
-                    class="movie-item fade-in">
-                    <div class="text text-left ml-12 py-12 w-75">
-                        <p style="font-size: 2.1rem; margin-left: 0rem; margin-top: 6rem;" class="text-4 font-weight-bold">
-                            {{
-                                randomMovie.title }}</p>
-                        <div class="rate d-lg-flex" style="margin-left: 0rem;">
-                            <v-rating readonly :length="5" :size="32" :model-value="3" active-color="primary" />
-                            <h4 class="font-weight-thin mr-4" style="margin-left: 0rem; padding: 4px;">{{
-                                randomMovie.popularity }} Reviews
-                            </h4>
-                            <h4 class="font-weight-thin pa-1"> {{ randomMovie.vote_count }} Votes</h4>
-                            <h4 class="font-weight-thin pa-1"> {{ randomMovie.release_date }} Release-date</h4>
-                        </div>
-                        <p class="w-100 ">{{ randomMovie.overview.slice(0, 80) }}...</p>
-                    </div>
-                    <!-- Display other movie information here -->
-                </div>
+                    class="movie-item fade-in"></div>
             </transition>
+            <div class="absolute md:top-20 top-40 text text-left md:ml-12 ml-5 py-12 w-75">
+                <p style="margin-left: 0rem; margin-top: 6rem;" class="md:text-4xl text-3xl  font-weight-bold">
+                    {{
+                        randomMovie.title }}</p>
+                <div class="rate d-lg-flex mt-5 mb-3" style="margin-left: 0rem;">
+                    <v-rating readonly :length="5" :size="32" :model-value="Math.floor(Math.random() * 5)"
+                        active-color="primary" />
+                    <h4 class="font-weight-thin mr-4" style="margin-left: 0rem; padding: 4px;">{{
+                        randomMovie.popularity }} Reviews
+                    </h4>
+                    <h4 class="font-weight-thin pa-1"> {{ randomMovie.vote_count }} Votes</h4>
+                    <h4 class="font-weight-thin pa-1"> {{ randomMovie.release_date }} Released</h4>
+                </div>
+                <p class="w-50 " v-if="!$vuetify.display.mobile">{{ randomMovie.overview.slice(0, 150) }}...</p>
+            </div>
+            <!-- Display other movie information here -->
+
+
         </div>
     </div>
     <!-- <button @click="random">Get</button> -->
@@ -61,7 +65,7 @@ export default {
         return {
             isloading: false,
             Results: [],
-            displayLimit: 100,
+            displayLimit: 100000,
             randomMovie: null,
         }
     },
@@ -69,15 +73,6 @@ export default {
         this.random();
     },
     methods: {
-        loadImage() {
-            const image = new Image();
-            image.src = `https://image.tmdb.org/t/p/original${this.randomMovie.backdrop_path}`;
-            image.addEventListener('load', () => {
-                this.isloading = false;
-                this.$refs.movieItem.style.opacity = 1;
-            });
-        },
-
         async random() {
 
             try {
@@ -103,13 +98,13 @@ export default {
             }
 
         },
-        watch: {
-            randomMovie() {
-                this.isloading = true;
-                this.$refs.movieItem.style.opacity = 0;
-                this.loadImage();
-            },
-        },
+        // watch: {
+        //     randomMovie() {
+        //         this.isloading = true;
+        //         this.$refs.movieItem.style.opacity = 0;
+        //         this.loadImage();
+        //     },
+        // },
     }
 }
 </script>

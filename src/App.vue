@@ -7,34 +7,34 @@ import footer1 from "./components/footer.vue"
 
 
 //set automatic theme
-onMounted(() => {
-  if (!localStorage.getItem("data-theme")) {
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      localStorage.setItem('data-theme', "dark");
-      document.documentElement.setAttribute('data-theme', "dark");
-    } else {
-      localStorage.setItem('data-theme', "light");
-      document.documentElement.setAttribute('data-theme', "light");
-    }
-  }
-})
+// onMounted(() => {
+//   if (!localStorage.getItem("data-theme")) {
+//     if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+//       localStorage.setItem('data-theme', "dark");
+//       document.documentElement.setAttribute('data-theme', "dark");
+//     } else {
+//       localStorage.setItem('data-theme', "light");
+//       document.documentElement.setAttribute('data-theme', "light");
+//     }
+//   }
+// })
 
-const theme = ref(false)
-const themelook = useTheme()
+// const theme = ref(false)
+// const themelook = useTheme()
 
-function changetheme() {
+// function changetheme() {
 
-  theme.value = !theme.value
-  themelook.global.name.value = theme.value ? "dark" : "light"
-  document.documentElement.setAttribute('data-theme', themelook.global.name.value);
-  localStorage.setItem('data-theme', themelook.global.name.value);
-}
+//   theme.value = !theme.value
+//   themelook.global.name.value = theme.value ? "dark" : "light"
+//   document.documentElement.setAttribute('data-theme', themelook.global.name.value);
+//   localStorage.setItem('data-theme', themelook.global.name.value);
+// }
 </script>
 
 <template>
   <!--Desktop-->
-  <v-layout class="text-2xl">
-    <v-navigation-drawer v-model="drawer" :rail="rail" :permanent="mobile != mobile">
+  <v-layout class="" color="black">
+    <v-navigation-drawer v-model="drawer" :rail="rail" :permanent="mobile != mobile" color="black">
       <v-list-item prepend-avatar="https://randomuser.me/api/portraits/men/13.jpg" :title="'Hello, ' + Accinfo.username"
         nav>
         <template v-slot:append>
@@ -58,16 +58,17 @@ function changetheme() {
       </v-list>
     </v-navigation-drawer>
     <v-main class=" align-center justify-center" style="min-height: 300px;">
-      <v-toolbar density="default">
+      <v-toolbar density="default" color="black">
 
         <v-app-bar-nav-icon v-if="!$vuetify.display.mobile" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-        <v-toolbar-title><router-link to="/">Home</router-link></v-toolbar-title>
+        <v-spacer></v-spacer>
+        <v-toolbar-title><img src="/logo.png" class="invert" width="40" alt=""></v-toolbar-title>
         <!-- <v-spacer></v-spacer> -->
-        <v-btn icon @Click="changetheme">
+        <!-- <v-btn icon @Click="changetheme">
           <v-icon :icon="theme ? 'mdi-weather-night' : 'mdi-weather-sunny'"></v-icon>
-        </v-btn>
+        </v-btn> -->
         <v-btn to="/" class="m-2 ">
-          <v-icon icon="mdi-magnify"></v-icon>Search
+          <v-icon icon="mdi-magnify"></v-icon>
         </v-btn>
       </v-toolbar>
       <v-fade-transition>
