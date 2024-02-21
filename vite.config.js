@@ -20,6 +20,7 @@ export default defineConfig({
         short_name: "Moviedb",
         description: "Follow latest shows and movies",
         theme_color: "#000000",
+        background_color: "#000000",
         icons: [
           {
             src: "/img/icons/apple-touch-icon-76x76.png",
