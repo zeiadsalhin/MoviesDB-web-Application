@@ -36,7 +36,7 @@ import footer1 from "./components/footer.vue"
   <v-layout class="" color="black">
     <v-navigation-drawer v-model="drawer" :rail="rail" :permanent="mobile != mobile" color="black">
       <v-list-item :prepend-avatar="`https://api.themoviedb.org/3/account/21017366${Accinfo.avatar_path}`"
-        :title="'Hello, ' + Accinfo.username" nav>
+        :title="'Hello, ' + Accinfo.name" nav>
         <template v-slot:append>
           <v-btn variant="text" icon="mdi-chevron-left" @click.stop="rail = !rail"></v-btn>
         </template>
