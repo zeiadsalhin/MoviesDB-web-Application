@@ -57,26 +57,30 @@ import footer1 from "./components/footer.vue"
           @click.stop="rail = !rail"></v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-main class=" align-center justify-center" style="min-height: 300px;">
+    <v-main class=" align-center justify-center" style="min-height: 300px;" @Click="">
       <v-toolbar density="default" color="black">
 
         <v-app-bar-nav-icon v-if="!$vuetify.display.mobile" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
         <v-spacer></v-spacer>
-        <v-toolbar-title><img src="/logo.png" class="invert" width="40" alt=""></v-toolbar-title>
+        <v-toolbar-title><img src="/logo.png" class="invert" width="30" alt=""></v-toolbar-title>
         <!-- <v-spacer></v-spacer> -->
         <!-- <v-btn icon @Click="changetheme">
           <v-icon :icon="theme ? 'mdi-weather-night' : 'mdi-weather-sunny'"></v-icon>
         </v-btn> -->
-        <v-btn to="/" class="m-2 ">
+        <v-btn @click="search = !search" class="">
           <v-icon icon="mdi-magnify"></v-icon>
         </v-btn>
+
       </v-toolbar>
+      <v-text-field clearable v-if="search" variant="outlined" placeholder="Search"
+        class="absolute z-50 mx-auto flex justify-center w-full bg-black h-14"></v-text-field>
       <v-fade-transition>
         <RouterView />
       </v-fade-transition>
       <footer1 />
 
     </v-main>
+
   </v-layout>
 
   <!--mobile-->
@@ -111,6 +115,7 @@ import footer1 from "./components/footer.vue"
 export default {
   data() {
     return {
+      search: null,
       drawer: true,
       rail: true,
       value: 1,
@@ -145,6 +150,12 @@ export default {
       }
 
     },
+
+    ts() {
+      this.search = true
+      searchinput.focus()
+    }
+
   }
 }
 
