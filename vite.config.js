@@ -19,7 +19,7 @@ export default defineConfig({
         name: " Moviedb Application",
         short_name: "Moviedb",
         description: "Follow latest shows and movies",
-        theme_color: "#ffffff",
+        theme_color: "#000000",
         icons: [
           {
             src: "/img/icons/apple-touch-icon-76x76.png",
