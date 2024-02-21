@@ -35,7 +35,7 @@ import footer1 from "./components/footer.vue"
   <!--Desktop-->
   <v-layout class="" color="black">
     <v-navigation-drawer v-model="drawer" :rail="rail" :permanent="mobile != mobile" color="black">
-      <v-list-item :prepend-avatar="`https://api.themoviedb.org/3/account/21017366${Accinfo.avatar_path}`"
+      <v-list-item :prepend-avatar="`https://image.tmdb.org/t/p/w200${Accinfo.avatar.tmdb.avatar_path}`"
         :title="'Hello, ' + Accinfo.name" nav>
         <template v-slot:append>
           <v-btn variant="text" icon="mdi-chevron-left" @click.stop="rail = !rail"></v-btn>
@@ -47,12 +47,10 @@ import footer1 from "./components/footer.vue"
       <v-list density="default" na>
         <v-list-item prepend-icon="mdi-home" title="Home" value="home" to="/"></v-list-item>
         <v-list-item prepend-icon="mdi-account" title="My Account" value="account" to="/account"></v-list-item>
-        <v-list-item prepend-icon="mdi-filmstrip" title="Latest Movies" value="movies" to="/"></v-list-item>
-        <v-list-item prepend-icon="mdi-star-circle  " title="Top Movies" value="moviestop" to="/"></v-list-item>
-        <v-list-item prepend-icon="mdi-heart" title="Favorites" value="moviestop" to="/"></v-list-item>
-        <v-list-item prepend-icon="mdi-list-box" title="My list" value="moviestop" to="/"></v-list-item>
-        <v-list-item prepend-icon="mdi-star" title="Rated Movies" value="moviestop" to="/"></v-list-item>
-        <v-list-item prepend-icon="mdi-information" title="About" value="moviestop" to="/about"></v-list-item>
+        <v-list-item prepend-icon="mdi-filmstrip" title="My Movies" value="movies" to="/movies"></v-list-item>
+        <v-list-item prepend-icon="mdi-heart" title="Favorites" value="favourites" to="/favourites"></v-list-item>
+        <v-list-item prepend-icon="mdi-list-box" title="My list" value="list" to="/list"></v-list-item>
+        <v-list-item prepend-icon="mdi-information" title="About" value="about" to="/about"></v-list-item>
         <v-list-item v-if="rail" prepend-icon="mdi-chevron-right" title="" value="expand"
           @click.stop="rail = !rail"></v-list-item>
       </v-list>
