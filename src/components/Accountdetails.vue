@@ -6,14 +6,10 @@
         <h1 class="text-2xl md:text-4xl text-white text-center font-bold p-2">My Account</h1>
         <div class="w-1/4 h-1 mt-5 rounded-xl mx-auto bg-zinc-700 "></div>
         <div class="bg-zinc-950 mt-5 w-fit mx-auto">
-            <v-fade-transition>
-                <div v-if="Emailinfo" id="loader" class="w-fit mx-auto">
-                    <img id="profile" :src="avatarsrc" class="mx-auto opacity-100 bg-white" width="100" height="200"
-                        alt="user">
-                </div>
-                <div v-else class=""><v-progress-circular indeterminate></v-progress-circular></div>
-            </v-fade-transition>
-
+            <div v-if="Emailinfo" id="loader" class="w-fit mx-auto">
+                <img id="profile" :src="avatarsrc" class="mx-auto opacity-100 bg-white" width="100" height="200" alt="user">
+            </div>
+            <div v-else class=""><v-progress-circular indeterminate></v-progress-circular></div>
         </div>
 
         <div class="w-1/6 h-1 m-5 rounded-xl mx-auto bg-zinc-900"></div>
