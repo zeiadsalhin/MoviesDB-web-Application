@@ -72,8 +72,10 @@ import footer1 from "./components/footer.vue"
         </v-btn>
 
       </v-toolbar>
-      <v-text-field clearable v-if="search" variant="outlined" placeholder="Search"
-        class="absolute z-50 min-w-full bg-black h-14"></v-text-field>
+      <v-fade-transition>
+        <v-text-field clearable v-if="search" variant="outlined" placeholder="Search"
+          class="absolute z-50 min-w-full bg-black h-14"></v-text-field>
+      </v-fade-transition>
       <v-fade-transition>
         <RouterView />
       </v-fade-transition>
@@ -136,7 +138,7 @@ export default {
           method: 'GET',
           headers: {
             accept: 'application/json',
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0MmZhYmU3Y2YwZjE1ZmM2NzcwNDI5NTU4NjQ1MmYyMyIsInN1YiI6IjY1ZDJjY2QwZTA0ZDhhMDE3Yzk4NjkxNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.lHtAcwN2dmtg-x6Lw1yqU6bBCGPAceThYLxJyyXbVZU'
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzZmE1ZTFjNGYwNDljNmQ2ODk5NGUxNjFhMzkwMjdiZCIsInN1YiI6IjY1ZDJjY2QwZTA0ZDhhMDE3Yzk4NjkxNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.UBW80pSmqSl9C9aXlY6WfPmil2ielVKp8Iqczoa0vwA'
           }
         };
         const url = ("https://api.themoviedb.org/3/account/21017366")

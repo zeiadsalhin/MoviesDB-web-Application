@@ -51,7 +51,7 @@
                     <h4 class="font-weight-thin pa-1"> {{ randomMovie.vote_count }} Votes</h4>
                     <h4 class="font-weight-thin pa-1"> {{ randomMovie.release_date }} Released</h4>
                 </div>
-                <p class="w-50 " v-if="!$vuetify.display.mobile">{{ randomMovie.overview.slice(0, 150) }}...</p>
+                <p class="w-50 " v-if="!$vuetify.display.mobile">{{ randomMovie.overview.slice(0, 300) }}...</p>
             </div>
             <!-- Display other movie information here -->
 
@@ -83,7 +83,7 @@ export default {
                     method: 'GET',
                     headers: {
                         accept: 'application/json',
-                        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0MmZhYmU3Y2YwZjE1ZmM2NzcwNDI5NTU4NjQ1MmYyMyIsInN1YiI6IjY1ZDJjY2QwZTA0ZDhhMDE3Yzk4NjkxNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.lHtAcwN2dmtg-x6Lw1yqU6bBCGPAceThYLxJyyXbVZU'
+                        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzZmE1ZTFjNGYwNDljNmQ2ODk5NGUxNjFhMzkwMjdiZCIsInN1YiI6IjY1ZDJjY2QwZTA0ZDhhMDE3Yzk4NjkxNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.UBW80pSmqSl9C9aXlY6WfPmil2ielVKp8Iqczoa0vwA'
                     }
                 };
                 const url = ("https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc")
