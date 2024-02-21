@@ -6,8 +6,7 @@
         <h1 class="text-2xl md:text-4xl dark:text-white text-center font-bold p-2">My Account</h1>
         <div class="w-1/4 h-1 mt-5 rounded-xl mx-auto bg-zinc-700 "></div>
         <div class="bg-zinc-950 mt-5 w-fit mx-auto">
-            <div :key="Emailinfo.avatar.tmdb.avatar_path" v-if="!Emailinfo == null" id="loader"
-                class="bg-white w-fit    mx-auto">
+            <div :key="Emailinfo.avatar.tmdb.avatar_path" v-if="Emailinfo" id="loader" class="bg-white w-fit    mx-auto">
                 <img id="profile" :src="`https://image.tmdb.org/t/p/w200${Emailinfo.avatar.tmdb.avatar_path}`"
                     class="mx-auto p- opacity-100" width="100" height="200" alt="user">
             </div>
