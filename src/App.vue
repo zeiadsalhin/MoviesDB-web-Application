@@ -108,6 +108,11 @@ import footer1 from "./components/footer.vue"
         Account
       </v-btn>
 
+      <v-btn to="/account">
+        <v-icon>mdi-information</v-icon>
+        About
+      </v-btn>
+
     </v-bottom-navigation>
   </v-layout>
 </template>
