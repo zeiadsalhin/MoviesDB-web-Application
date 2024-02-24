@@ -43,7 +43,7 @@ import suggested from '../components/Suggested.vue'
                                 alt="Movie Poster" class="poster mx-auto" style="width: 40vh;" width="100%">
                         </div>
                     </transition>
-                    <div class="txt space-y-5 w-11/12">
+                    <div class="txt space-y-5 w-4/5">
                         <h1 class="text-3xl font-medium">Storyline</h1>
                         <p class="opacity-70">{{ movie.overview }}</p>
                         <div class="release flex space-x-10">
