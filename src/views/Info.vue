@@ -25,7 +25,7 @@
             </div>
         </div>
 
-        <div class="overview">
+        <!-- <div class="overview">
             <div class="overviewtext flex p-10 space-x-10 bg-zinc-900">
                 <div class="img">
                     <v-img v-if="movie.poster_path" :src="'https://image.tmdb.org/t/p/original' + movie.poster_path"
@@ -50,20 +50,16 @@
                         <p>Revenue</p>
                         <p>${{ movie.revenue.toLocaleString(undefined, { maximumFractionDigits: 2 }) }}</p>
                     </div>
-                    <div class="duration flex space-x-10">
-                        <p>Genre</p>
-                        <p>{{ movie.genres.join(', ') }} min</p>
-                    </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </template>
 <script>
 export default {
     data() {
         return {
-            movie: null
+            movie: []
         };
     },
     mounted() {
@@ -72,7 +68,6 @@ export default {
     methods: {
         async fetchMovieDetails() {
             try {
-                const genreIds = this.movie.genres.map(genre => genre.id);
                 const movieId = this.$route.params.id;
                 const options = {
                     method: 'GET',
@@ -81,16 +76,11 @@ export default {
                         Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzZmE1ZTFjNGYwNDljNmQ2ODk5NGUxNjFhMzkwMjdiZCIsInN1YiI6IjY1ZDJjY2QwZTA0ZDhhMDE3Yzk4NjkxNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.UBW80pSmqSl9C9aXlY6WfPmil2ielVKp8Iqczoa0vwA'
                     }
                 };
-                const url = `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`;
+                const url = `https://api.themoviedb.org/3/movie/1211483?language=en-US`;
 
                 const response = await fetch(url, options);
                 const data = await response.json();
                 this.movie = data;
-                const genreNames = genreData.genres
-                    .filter(genre => genreIds.includes(genre.id))
-                    .map(genre => genre.name);
-
-                this.movie.genres = genreNames;
             } catch (error) {
                 console.error(error);
             }
