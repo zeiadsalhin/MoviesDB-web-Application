@@ -116,6 +116,7 @@ export default {
     },
     methods: {
         async fetchMovies() {
+            const movieId = this.$route.params.id;
             const options = {
                 method: 'GET',
                 headers: {
@@ -125,7 +126,7 @@ export default {
             };
 
             try {
-                const response = await fetch(`https://api.themoviedb.org/3/movie/848187/similar?language=en-US&page=1`, options);
+                const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/similar?language=en-US&page=1`, options);
                 const data = await response.json();
                 this.movies = [...this.movies, ...data.results];
                 this.totalPages = data.total_pages;
