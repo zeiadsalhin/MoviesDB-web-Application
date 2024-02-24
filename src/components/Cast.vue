@@ -2,6 +2,9 @@
 </script>
 <template>
     <div class="cast md:flex md:p-10 p-1 space-x-10 bg-zinc-900 mt-5">
+        <div class="text text-3xl font-medium p-10">
+            <h1>Cast</h1>
+        </div>
         <div v-if="movieCredits" class="scroll-container" ref="scrollContainer">
             <button class="scroll-button left" @click="scrollLeft" v-show="scrollLeftButtonVisible"
                 v-if="!$vuetify.display.mobile">

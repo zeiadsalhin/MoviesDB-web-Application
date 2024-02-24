@@ -2,6 +2,9 @@
 </script>
 <template>
     <div class="cast md:flex md:p-10 p-1 space-x-10 bg-zinc-900 mt-5">
+        <div class="text text-3xl font-medium p-10">
+            <h1>Cast</h1>
+        </div>
         <div v-if="movieCredits" class="scroll-container" ref="scrollContainer">
             <button class="scroll-button left" @click="scrollLeft" v-show="scrollLeftButtonVisible"
                 v-if="!$vuetify.display.mobile">
@@ -108,7 +111,7 @@ export default {
                         Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzZmE1ZTFjNGYwNDljNmQ2ODk5NGUxNjFhMzkwMjdiZCIsInN1YiI6IjY1ZDJjY2QwZTA0ZDhhMDE3Yzk4NjkxNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.UBW80pSmqSl9C9aXlY6WfPmil2ielVKp8Iqczoa0vwA'
                     }
                 };
-                const url = `'https://api.themoviedb.org/3/tv/${tvid}/credits?language=en-US`;
+                const url = `https://api.themoviedb.org/3/tv/${tvid}/credits?language=en-US`;
 
                 const response = await fetch(url, options);
                 const data = await response.json();
