@@ -1,5 +1,6 @@
 <script setup>
-import bannerinfo from '../components/Banner.vue'
+import cast from '../components/Cast.vue'
+import suggested from '../components/Suggested.vue'
 </script>
 <template>
     <div class="info-container">
@@ -42,7 +43,7 @@ import bannerinfo from '../components/Banner.vue'
                                 alt="Movie Poster" class="poster mx-auto" style="width: 40vh;" width="100%">
                         </div>
                     </transition>
-                    <div class="txt space-y-5 w-3/4">
+                    <div class="txt space-y-5 w-11/12">
                         <h1 class="text-3xl font-medium">Storyline</h1>
                         <p class="opacity-70">{{ movie.overview }}</p>
                         <div class="release flex space-x-10">
@@ -102,7 +103,8 @@ import bannerinfo from '../components/Banner.vue'
 
             <div v-else>NO Data</div>
         </transition>
-
+        <cast />
+        <suggested />
     </div>
 </template>
 <script>
