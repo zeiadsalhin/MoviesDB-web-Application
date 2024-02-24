@@ -75,7 +75,7 @@ export default {
                 const url = ("https://api.themoviedb.org/3/account/21017366")
                 const response = await fetch(url, options)
                 const data = await response.json()
-                console.log(data)
+                // console.log(data)
                 this.Emailinfo = data
                 this.avatarsrc = (`https://image.tmdb.org/t/p/w200${this.Emailinfo.avatar.tmdb.avatar_path}`)
                 this.isloading = false
