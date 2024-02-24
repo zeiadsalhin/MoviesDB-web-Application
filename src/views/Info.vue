@@ -63,10 +63,14 @@ import bannerinfo from '../components/Banner.vue'
                             <p class="opacity-80">${{ movie.revenue.toLocaleString(undefined, { maximumFractionDigits: 2 })
                             }}</p>
                         </div>
-                        <div class="duration flex space-x-5">
-                            <p>Genre</p>
-                            <div v-for="genre in movie.genres" :key="genre.id">
-                                <p class="opacity-80">{{ genre.name }}</p>
+                        <div class="duration flex space-x-10">
+                            <div class="g">
+                                <p>Genre</p>
+                            </div>
+                            <div class="r md:flex md:space-x-5 space-y-2 md:space-y-0">
+                                <div v-for="genre in movie.genres" :key="genre.id">
+                                    <p class="opacity-80 mx-auto">{{ genre.name }}</p>
+                                </div>
                             </div>
                         </div>
                         <div class="duration flex space-x-10">
@@ -77,11 +81,20 @@ import bannerinfo from '../components/Banner.vue'
                             <p>Language</p>
                             <p class="opacity-80">{{ movie.original_language }}</p>
                         </div>
-                        <div class="duration md:flex space-x-5 space-y-2 md:space-y-0">
-                            <p>Production</p>
-                            <div v-for="company in movie.production_companies" :key="company.id" class="">
-                                <p class="opacity-80 ">{{ company.name }}</p>
+                        <div class="duration flex space-x-10">
+                            <div class="p">
+                                <p>Production</p>
                             </div>
+                            <div class="r md:flex md:space-x-5 space-y-2 md:space-y-0">
+                                <div v-for="company in movie.production_companies" :key="company.id" class="">
+                                    <p class="opacity-80 mx-auto">{{ company.name }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="duration flex space-x-10 mb-10">
+                            <p class="my-auto">Watch</p>
+                            <a :href="`https://yts.mx/movies/${movie.title}`" target="_blank" title="yts.mx"
+                                class="text-sky-700 underline my-auto">Watch now</a>
                         </div>
                     </div>
                 </div>
