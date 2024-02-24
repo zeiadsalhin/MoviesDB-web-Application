@@ -15,8 +15,8 @@
                     <v-img v-if="movie.poster_path" :src="'https://image.tmdb.org/t/p/original' + movie.poster_path"
                         alt="Movie Poster"
                         class="poster mx-auto hover:scale-105 transform transition ease-in-out duration-300"></v-img>
-                    <h3 class="font-semibold text-lg p-4 mx-auto">{{ movie.title.slice(0, 16) }}</h3>
-                    <p class="opacity-70">Release Date:<br> {{ movie.release_date }}</p>
+                    <h3 class="font-semibold md:text-lg p-4 mx-auto">{{ movie.title.slice(0, 16) }}</h3>
+                    <p class="opacity-70 text-sm">Release Date:<br> {{ movie.release_date }}</p>
                 </div>
             </div>
             <button class="text-xl bg-zinc-900 hover:bg-zinc-950 h-2/3 mt-10 px-4 mx-5 transform transition ease-in-out"
@@ -58,7 +58,8 @@
 }
 
 .poster {
-    width: 200px;
+    width: 28vh;
+    height: 100%;
     padding: 0.1rem;
     height: fit-content;
 }
