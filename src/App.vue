@@ -74,7 +74,7 @@ import footer1 from "./components/footer.vue"
           class="absolute z-50 min-w-full bg-black h-14"></v-text-field>
       </v-fade-transition>
       <v-fade-transition>
-        <RouterView />
+        <RouterView :key="$route.path" />
       </v-fade-transition>
       <footer1 />
 

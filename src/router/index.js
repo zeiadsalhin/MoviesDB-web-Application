@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import Info from '../views/Info.vue';
+import Infotv from '../views/Infotv.vue';
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -37,6 +38,11 @@ const router = createRouter({
       path: '/info/:id',
       name: 'Info',
       component: Info
+    },
+    {
+      path: '/infotv/:id',
+      name: 'Infotv',
+      component: Infotv
     }
   ],
   scrollBehavior(to, from, savedPosition) {

@@ -1,46 +1,33 @@
+<script setup>
+</script>
 <template>
-    <div class="main px-10 text-2xl mt-10 flex">
-        <h1>Discover TV Shows</h1>
-        <router-link class="text-sm my-auto px-5 text-sky-400" to="/discovertv">view all</router-link>
-    </div>
-    <!-- <v-lazy> -->
-    <div class="scrollh overflow-hidden">
-        <div class="scroll-container" ref="scrollContainer">
+    <div class="cast md:flex md:p-10 p-1 space-x-10 bg-zinc-900 mt-5">
+        <div v-if="movieCredits" class="scroll-container" ref="scrollContainer">
             <button class="scroll-button left" @click="scrollLeft" v-show="scrollLeftButtonVisible"
                 v-if="!$vuetify.display.mobile">
                 <v-icon icon="mdi-chevron-left"></v-icon>
             </button>
             <div class="movie-list" ref="movieList">
-                <div v-for="movie in visibleMovies" :key="movie.id" class="movie-item p-2">
-                    <router-link :to="{ name: 'Infotv', params: { id: movie.id } }">
-                        <v-img v-if="movie.poster_path" :src="'https://image.tmdb.org/t/p/original' + movie.poster_path"
-                            alt="Movie Poster"
-                            class="poster mx-auto hover:scale-105 transform transition ease-in-out duration-300"></v-img>
-                        <h3 class="font-semibold md:text-lg p-4 mx-auto">{{ movie.name.slice(0, 16) }}</h3>
-                        <p class="opacity-70 text-sm">Release Date:<br> {{ movie.first_air_date }}</p>
-                        <v-rating v-if="!$vuetify.display.mobile" :model-value="Math.random() * (5 - 2) + 2" hover
-                            half-increments density="compact" size="small" color="blue-lighten-1"></v-rating>
-                        <p class="" v-if="$vuetify.display.mobile"><v-icon icon="mdi-star" size="x-small"
-                                class="my-auto"></v-icon>
-                            {{
-                                movie.vote_average.toFixed(1)
-                            }}</p>
-                        <p class="opacity-70 text-sm">Release Date:<br> {{ movie.release_date }}</p>
-                    </router-link>
+                <div v-for="person in movieCredits.cast" :key="person.id" class="person p-2">
+
+                    <v-img v-if="person.profile_path" :src="'https://image.tmdb.org/t/p/original' + person.profile_path"
+                        alt="Person" width="100%" height="100%"
+                        style=" width: 22vh;height: 100%;margin: 0.1rem;height: fit-content;"
+                        class="poster mx-auto hover:scale-105 transform transition ease-in-out duration-300"></v-img>
+                    <v-img v-else src="/error.svg"></v-img>
+                    <h3 class="font-semibold md:text-md text-left py-2">{{ person.name }}</h3>
+                    <p class="opacity-70 text-sm text-left">{{ person.character }}</p>
+
                 </div>
             </div>
-            <button class="text-xl bg-zinc-900 hover:bg-zinc-950 h-2/3 mt-10 px-4 mx-5 transform transition ease-in-out"
-                @click="fetchNextPage">View
-                full list&#8678;</button>
             <button class="scroll-button right" @click="scrollRight" v-show="scrollRightButtonVisible"
                 v-if="!$vuetify.display.mobile">
                 <v-icon icon="mdi-chevron-right"></v-icon>
             </button>
         </div>
+        <div v-else>Loading Cast</div>
     </div>
-    <!-- </v-lazy> -->
 </template>
-  
 <style>
 ::-webkit-scrollbar {
     display: none;
@@ -49,7 +36,7 @@
 .scroll-container {
     /* position: relative; */
     width: 100%;
-    height: 75vh;
+    height: 50vh;
     display: flex;
     overflow-x: scroll;
     overflow-y: hidden;
@@ -58,7 +45,7 @@
 
 .movie-list {
     display: flex;
-    padding: 40px;
+    padding: 20px;
 }
 
 .movie-item {
@@ -67,18 +54,18 @@
     margin-right: 0px;
 }
 
-.poster {
-    width: 28vh;
+/* .poster {
+    width: 22vh;
     height: 100%;
     padding: 0.1rem;
     height: fit-content;
-}
+} */
 
 .scroll-button {
     position: sticky;
     z-index: 999;
     top: 50%;
-    transform: translateY(-10%);
+    transform: translateY(0%);
     width: 20%;
     height: 100%;
     margin-top: auto;
@@ -98,47 +85,37 @@
     right: 0px;
 }
 </style>
-  
 <script>
 export default {
     data() {
         return {
-            movies: [],
-            visibleMovies: [],
-            currentPage: 1,
-            pageSize: 20,
-            totalPages: null,
+            movieCredits: null,
             scrollLeftButtonVisible: false,
             scrollRightButtonVisible: true,
         };
     },
     mounted() {
-        this.fetchMovies();
+        this.fetchMovieDetails();
     },
     methods: {
-        async fetchMovies() {
-            const options = {
-                method: 'GET',
-                headers: {
-                    accept: 'application/json',
-                    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzZmE1ZTFjNGYwNDljNmQ2ODk5NGUxNjFhMzkwMjdiZCIsInN1YiI6IjY1ZDJjY2QwZTA0ZDhhMDE3Yzk4NjkxNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.UBW80pSmqSl9C9aXlY6WfPmil2ielVKp8Iqczoa0vwA',
-                },
-            };
-
+        async fetchMovieDetails() {
             try {
-                const response = await fetch(`https://api.themoviedb.org/3/discover/tv?include_adult=true&include_video=true&language=en-US&page=${this.currentPage}&sort_by=popularity.desc`, options);
+                const tvid = this.$route.params.id;
+                const options = {
+                    method: 'GET',
+                    headers: {
+                        accept: 'application/json',
+                        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzZmE1ZTFjNGYwNDljNmQ2ODk5NGUxNjFhMzkwMjdiZCIsInN1YiI6IjY1ZDJjY2QwZTA0ZDhhMDE3Yzk4NjkxNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.UBW80pSmqSl9C9aXlY6WfPmil2ielVKp8Iqczoa0vwA'
+                    }
+                };
+                const url = `'https://api.themoviedb.org/3/tv/${tvid}/credits?language=en-US`;
+
+                const response = await fetch(url, options);
                 const data = await response.json();
-                this.movies = [...this.movies, ...data.results];
-                this.totalPages = data.total_pages;
-                this.loadVisibleMovies();
+                this.movieCredits = data;
             } catch (error) {
                 console.error(error);
             }
-        },
-        loadVisibleMovies() {
-            const startIndex = (this.currentPage - 1) * this.pageSize;
-            const endIndex = startIndex + this.pageSize;
-            this.visibleMovies = this.movies.slice(startIndex, endIndex);
         },
         scrollLeft() {
             const container = this.$refs.scrollContainer;
@@ -200,6 +177,6 @@ export default {
         easeInOutQuad(t) {
             return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
         },
-    },
+    }
 };
 </script>
