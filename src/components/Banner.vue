@@ -1,32 +1,4 @@
-<script setup>
-// const options = {
-//     method: 'GET',
-//     headers: {
-//         accept: 'application/json',
-//         Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0MmZhYmU3Y2YwZjE1ZmM2NzcwNDI5NTU4NjQ1MmYyMyIsInN1YiI6IjY1ZDJjY2QwZTA0ZDhhMDE3Yzk4NjkxNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.lHtAcwN2dmtg-x6Lw1yqU6bBCGPAceThYLxJyyXbVZU'
-//     }
-// };
-
-// fetch('https://api.themoviedb.org/3/authentication', options)
-//     .then(response => response.json())
-//     .then(response => console.log(response))
-//     .catch(err => console.error(err));
-</script>
 <template>
-    <!-- <div>
-        <div v-if="isloading">Loading...</div>
-        <div v-else>
-            <div v-for="movie in Results" :key="movie.id">
-                <div class="movie-item">
-                    <h3>{{ movie.title }}</h3> -->
-    <!-- Add other movie information here -->
-    <!-- </div>
-            </div>
-        </div>
-    </div> -->
-
-
-
     <div class="-mt-16">
         <div v-if="isloading" class="flex justify-center" style="height: 70vh;">
             <div class="load m-auto"><v-progress-circular indeterminate></v-progress-circular></div>
@@ -39,9 +11,11 @@
             </transition>
             <div :key="randomMovie.id" v-if="randomMovie"
                 class="absolute md:top-20 top-40   text text-left md:ml-12 ml-5 py-12 w-75">
-                <p style="margin-left: 0rem; margin-top: 6rem;" class="md:text-4xl text-3xl  font-weight-bold">
-                    {{
-                        randomMovie.title }}</p>
+                <router-link :to="{ name: 'Info', params: { id: randomMovie.id } }">
+                    <p style="margin-left: 0rem; margin-top: 6rem;" class="md:text-4xl text-3xl  font-weight-bold">
+                        {{
+                            randomMovie.title }}</p>
+                </router-link>
                 <div class="rate d-lg-flex mt-5 mb-3" style="margin-left: 0rem;">
                     <v-rating readonly :length="5" :size="32" :model-value="Math.floor(Math.random() * (5 - 2) + 2)"
                         active-color="primary" />
