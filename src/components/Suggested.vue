@@ -4,7 +4,7 @@
         <router-link class="text-sm my-auto px-5 text-sky-400" to="/discover">view all</router-link>
     </div>
     <v-lazy>
-        <div class="scrollh overflow-hidden">
+        <div v-if="movies.length > 1" class="scrollh overflow-hidden">
             <div class="scroll-container" ref="scrollContainer">
                 <button class="scroll-button left" @click="scrollLeft" v-show="scrollLeftButtonVisible"
                     v-if="!$vuetify.display.mobile">
@@ -39,6 +39,7 @@
                 </button>
             </div>
         </div>
+        <div v-else class="flex justify-center m-auto p-5">Cannot find similar results</div>
     </v-lazy>
 </template>
   
