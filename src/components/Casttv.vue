@@ -1,34 +1,36 @@
 <script setup>
 </script>
 <template>
-    <div class="cast md:flex md:p-10 p-1 space-x-10 bg-zinc-900 mt-5">
-        <div class="text text-3xl font-medium p-10">
+    <div class="cast md:flex md:p-10 p-1 md:space-x-10 bg-zinc-900 mt-5">
+        <div class="text text-3xl font-medium p-5">
             <h1>Cast</h1>
         </div>
-        <div v-if="movieCredits" class="scroll-container" ref="scrollContainer">
-            <button class="scroll-button left" @click="scrollLeft" v-show="scrollLeftButtonVisible"
-                v-if="!$vuetify.display.mobile">
-                <v-icon icon="mdi-chevron-left"></v-icon>
-            </button>
-            <div class="movie-list" ref="movieList">
-                <div v-for="person in movieCredits.cast" :key="person.id" class="person p-2">
+        <v-lazy>
+            <div v-if="movieCredits != null" class="scroll-container" ref="scrollContainer">
+                <button class="scroll-button left" @click="scrollLeft" v-show="scrollLeftButtonVisible"
+                    v-if="!$vuetify.display.mobile">
+                    <v-icon icon="mdi-chevron-left"></v-icon>
+                </button>
+                <div class="movie-list" ref="movieList">
+                    <div v-for="person in movieCredits.cast" :key="person.id" class="person p-2">
 
-                    <v-img v-if="person.profile_path" :src="'https://image.tmdb.org/t/p/original' + person.profile_path"
-                        alt="Person" width="100%" height="100%"
-                        style=" width: 22vh;height: 100%;margin: 0.1rem;height: fit-content;"
-                        class="poster mx-auto hover:scale-105 transform transition ease-in-out duration-300"></v-img>
-                    <v-img v-else src="/error.svg"></v-img>
-                    <h3 class="font-semibold md:text-md text-left py-2">{{ person.name }}</h3>
-                    <p class="opacity-70 text-sm text-left">{{ person.character }}</p>
+                        <v-img v-if="person.profile_path" :src="'https://image.tmdb.org/t/p/original' + person.profile_path"
+                            alt="Person" width="100%" height="100%"
+                            style=" width: 22vh;height: 100%;margin: 0.1rem;height: fit-content;"
+                            class="poster mx-auto hover:scale-105 transform transition ease-in-out duration-300"></v-img>
+                        <v-img v-else src="/error.svg"></v-img>
+                        <h3 class="font-semibold md:text-md text-left py-2">{{ person.name }}</h3>
+                        <p class="opacity-70 text-sm text-left">{{ person.character }}</p>
 
+                    </div>
                 </div>
+                <button class="scroll-button right" @click="scrollRight" v-show="scrollRightButtonVisible"
+                    v-if="!$vuetify.display.mobile">
+                    <v-icon icon="mdi-chevron-right"></v-icon>
+                </button>
             </div>
-            <button class="scroll-button right" @click="scrollRight" v-show="scrollRightButtonVisible"
-                v-if="!$vuetify.display.mobile">
-                <v-icon icon="mdi-chevron-right"></v-icon>
-            </button>
-        </div>
-        <div v-else>Loading Cast</div>
+            <div v-else class="flex justify-center m-auto p-5">Cannot find Cast</div>
+        </v-lazy>
     </div>
 </template>
 <style>
