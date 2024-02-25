@@ -101,8 +101,12 @@ import suggested from '../components/Suggested.vue'
                 </div>
             </div>
         </transition>
-        <cast />
-        <suggested />
+        <v-lazy>
+            <cast />
+        </v-lazy>
+        <v-lazy>
+            <suggested />
+        </v-lazy>
     </div>
 </template>
 <script>
