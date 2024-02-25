@@ -7,9 +7,11 @@ import suggested from '../components/Suggested.vue'
         <transition name="fade" mode="out-in">
             <div>
                 <transition name="fade" mode="out-in">
-                    <div :key="movie.id" v-if="movie"
-                        :style="{ backgroundImage: `linear-gradient(to top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.0)),linear-gradient(to right, rgba(0, 0, 0, 2), rgba(0, 0, 0, 0)),linear-gradient(to right, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0)), url(https://image.tmdb.org/t/p/original${movie.backdrop_path})` }"
-                        class="movie-item fade-in"></div>
+                    <div :key="movie.id" v-if="movie">
+                        <v-parallax id="par" :src="`https://image.tmdb.org/t/p/original${movie.backdrop_path}`"
+                            class="movie-item fade-in"
+                            gradient="to top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.0)),linear-gradient(to right, rgba(0, 0, 0, 2), rgba(0, 0, 0, 0)),linear-gradient(to right, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0)"></v-parallax>
+                    </div>
                 </transition>
                 <transition name="fade" mode="out-in" appear>
                     <div :key="movie.id" v-if="movie"

@@ -5,9 +5,11 @@
         </div>
         <div v-else>
             <transition name="fade" mode="out-in">
-                <div :key="randomMovie.id" v-if="randomMovie"
-                    :style="{ backgroundImage: `linear-gradient(to top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.0)),linear-gradient(to right, rgba(0, 0, 0, 2), rgba(0, 0, 0, 0)),linear-gradient(to right, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0)), url(https://image.tmdb.org/t/p/original${randomMovie.backdrop_path})` }"
-                    class="movie-item fade-in"></div>
+                <div :key="randomMovie.id" v-if="randomMovie">
+                    <v-parallax id="par" :src="`https://image.tmdb.org/t/p/original${randomMovie.backdrop_path}`"
+                        class="movie-item fade-in"
+                        gradient="to top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.0)),linear-gradient(to right, rgba(0, 0, 0, 2), rgba(0, 0, 0, 0)),linear-gradient(to right, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0)"></v-parallax>
+                </div>
             </transition>
             <div :key="randomMovie.id" v-if="randomMovie"
                 class="absolute md:top-20 top-40   text text-left md:ml-12 ml-5 py-12 w-75">
@@ -85,6 +87,10 @@ export default {
     background-size: cover;
     background-blend-mode: multiply;
     /* Add other desired styles */
+}
+
+#par .v-parallax__content {
+    background: linear-gradient(45deg, black, transparent);
 }
 
 .fade-in {
