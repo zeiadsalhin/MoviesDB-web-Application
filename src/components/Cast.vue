@@ -6,7 +6,7 @@
             <h1>Cast</h1>
         </div>
         <v-lazy>
-            <div v-if="movieCredits.cast.length > 1" class="scroll-container" ref="scrollContainer">
+            <div v-if="movieCredits.cast.length > 0" class="scroll-container" ref="scrollContainer">
                 <button class="scroll-button left" @click="scrollLeft" v-show="scrollLeftButtonVisible"
                     v-if="!$vuetify.display.mobile">
                     <v-icon icon="mdi-chevron-left"></v-icon>
@@ -24,8 +24,8 @@
 
                     </div>
                 </div>
-                <button class="scroll-button right" @click="scrollRight" v-show="!scrollRightButtonVisible"
-                    v-if="!$vuetify.display.mobile && movieCredits.cast.length > 6">
+                <button class="scroll-button right" @click="scrollRight" v-show="scrollRightButtonVisible"
+                    v-if="!$vuetify.display.mobile">
                     <v-icon icon="mdi-chevron-right"></v-icon>
                 </button>
             </div>
