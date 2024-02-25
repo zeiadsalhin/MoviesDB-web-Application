@@ -25,7 +25,7 @@
                     </div>
                 </div>
                 <button class="scroll-button right" @click="scrollRight" v-show="scrollRightButtonVisible"
-                    v-if="!$vuetify.display.mobile">
+                    v-if="!$vuetify.display.mobile && movieCredits.cast.length > 7">
                     <v-icon icon="mdi-chevron-right"></v-icon>
                 </button>
             </div>
