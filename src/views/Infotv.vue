@@ -138,8 +138,16 @@ import suggestedtv from '../components/Suggestedtv.vue'
                 </div>
             </div>
         </transition>
-        <casttv />
-        <suggestedtv />
+        <transition name="fade" mode="out-in">
+            <v-lazy>
+                <casttv />
+            </v-lazy>
+        </transition>
+        <transition name="fade" mode="out-in">
+            <v-lazy>
+                <suggestedtv />
+            </v-lazy>
+        </transition>
     </div>
 </template>
 <script>
