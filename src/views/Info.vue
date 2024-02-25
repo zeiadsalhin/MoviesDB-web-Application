@@ -101,12 +101,16 @@ import suggested from '../components/Suggested.vue'
                 </div>
             </div>
         </transition>
-        <v-lazy>
-            <cast />
-        </v-lazy>
-        <v-lazy>
-            <suggested />
-        </v-lazy>
+        <transition name="fade" mode="out-in">
+            <v-lazy>
+                <cast />
+            </v-lazy>
+        </transition>
+        <transition name="fade" mode="out-in">
+            <v-lazy>
+                <suggested />
+            </v-lazy>
+        </transition>
     </div>
 </template>
 <script>
