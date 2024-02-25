@@ -156,7 +156,7 @@ export default {
             const maxScroll = container.scrollWidth - container.clientWidth;
 
             this.scrollLeftButtonVisible = container.scrollLeft > 0;
-            this.scrollRightButtonVisible = container.scrollLeft = maxScroll;
+            this.scrollRightButtonVisible = container.scrollLeft === maxScroll;
         },
 
         smoothScroll(container, currentScroll, targetScroll) {
