@@ -40,7 +40,7 @@
     <!-- </v-lazy> -->
 </template>
   
-<style>
+<style scoped>
 ::-webkit-scrollbar {
     display: none;
 }
