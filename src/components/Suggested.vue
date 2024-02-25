@@ -21,12 +21,12 @@
                             <!-- <p class="opacity-70 text-sm">Release Date:<br> {{ movie.first_air_date }}</p> -->
                             <v-rating v-if="!$vuetify.display.mobile" :model-value="Math.random() * (5 - 2) + 2" hover
                                 half-increments density="compact" size="small" color="blue-lighten-1"></v-rating>
-                            <p class="" v-if="$vuetify.display.mobile"><v-icon icon="mdi-star" size="x-small"
+                            <p class="-mt-2 mb-2" v-if="$vuetify.display.mobile"><v-icon icon="mdi-star" size="x-small"
                                     class="my-auto"></v-icon>
                                 {{
                                     movie.vote_average.toFixed(1)
                                 }}</p>
-                            <p class="opacity-70 text-sm">Release Date:<br> {{ movie.release_date }}</p>
+                            <p class="opacity-70 text-sm">Release Date:<br> {{ movie.release_date.slice(0, 4) }}</p>
                         </router-link>
                     </div>
                 </div>
