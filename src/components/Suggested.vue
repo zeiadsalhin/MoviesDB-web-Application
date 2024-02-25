@@ -18,7 +18,7 @@
                                 class="poster mx-auto hover:scale-105 transform transition ease-in-out duration-300"></v-img>
                             <v-img v-else src="/error.svg" class="poster bg-zinc-900"></v-img>
                             <h3 class="font-semibold md:text-lg p-4 mx-auto">{{ movie.title }}</h3>
-                            <p class="opacity-70 text-sm">Release Date:<br> {{ movie.first_air_date }}</p>
+                            <!-- <p class="opacity-70 text-sm">Release Date:<br> {{ movie.first_air_date }}</p> -->
                             <v-rating v-if="!$vuetify.display.mobile" :model-value="Math.random() * (5 - 2) + 2" hover
                                 half-increments density="compact" size="small" color="blue-lighten-1"></v-rating>
                             <p class="" v-if="$vuetify.display.mobile"><v-icon icon="mdi-star" size="x-small"
