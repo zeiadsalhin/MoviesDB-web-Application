@@ -70,7 +70,7 @@
 }
 
 .poster {
-    width: 28vh;
+    width: 25vh;
     height: 100%;
     padding: 0.1rem;
     height: fit-content;

@@ -16,7 +16,7 @@
                         <v-img v-if="movie.poster_path" :src="'https://image.tmdb.org/t/p/original' + movie.poster_path"
                             alt="Movie Poster"
                             class="poster mx-auto hover:scale-105 transform transition ease-in-out duration-300"></v-img>
-                        <h3 class="font-semibold md:text-lg p-4 mx-auto">{{ movie.name.slice(0, 16) }}</h3>
+                        <h3 class="font-semibold md:text-lg p-3 mx-auto">{{ movie.name.slice(0, 16) }}</h3>
                         <p class="opacity-70 text-sm">Release Date:<br> {{ movie.first_air_date }}</p>
                         <v-rating v-if="!$vuetify.display.mobile" :model-value="Math.random() * (5 - 2) + 2" hover
                             half-increments density="compact" size="small" color="blue-lighten-1"></v-rating>
@@ -25,7 +25,7 @@
                             {{
                                 movie.vote_average.toFixed(1)
                             }}</p>
-                        <p class="opacity-70 text-sm">Release Date:<br> {{ movie.release_date }}</p>
+                        <!-- <p class="opacity-70 text-sm">Release Date:<br> {{ movie.release_date }}</p> -->
                     </router-link>
                 </div>
             </div>
@@ -49,7 +49,7 @@
 .scroll-container {
     /* position: relative; */
     width: 100%;
-    height: 75vh;
+    height: 65vh;
     display: flex;
     overflow-x: scroll;
     overflow-y: hidden;
