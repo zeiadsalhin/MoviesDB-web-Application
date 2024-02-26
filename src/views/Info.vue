@@ -13,7 +13,7 @@ import suggested from '../components/Suggested.vue'
                             gradient="to top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.0)),linear-gradient(to right, rgba(0, 0, 0, 2), rgba(0, 0, 0, 0)),linear-gradient(to right, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0)"></v-parallax>
                     </div>
                 </transition>
-                <transition name="fade" mode="out-in" appear>
+                <transition name="slide-fade" appear>
                     <div :key="movie.id" v-if="movie"
                         class="absolute md:top-20 top-40   text text-left md:ml-12 ml-5 py-12 w-75">
                         <router-link :to="{ name: 'Info', params: { id: movie.id } }">
@@ -25,7 +25,7 @@ import suggested from '../components/Suggested.vue'
                             <v-rating readonly :length="5" :size="32" :model-value="Math.floor(Math.random() * (5 - 2) + 2)"
                                 active-color="primary" />
                             <h4 class="font-weight-thin mr-4" style="margin-left: 0rem; padding: 4px;">{{
-                                movie.popularity }} Reviews
+                                movie.popularity.toFixed() }} Reviews
                             </h4>
                             <h4 class="font-weight-thin pa-1"> {{ movie.vote_count }} Votes</h4>
                             <h4 class="font-weight-thin pa-1"> {{ movie.release_date }} Released</h4>
@@ -42,7 +42,7 @@ import suggested from '../components/Suggested.vue'
                     <transition name="fade" mode="out-in">
                         <div class="img p-4">
                             <img v-if="movie.poster_path" :src="'https://image.tmdb.org/t/p/original' + movie.poster_path"
-                                alt="Movie Poster" class="poster mx-auto" style="width: 40vh;" width="100%">
+                                alt="Movie Poster" class="poster mx-auto" style="width: 35vh;" width="100%">
                         </div>
                     </transition>
                     <div class="txt space-y-5 w-4/5">

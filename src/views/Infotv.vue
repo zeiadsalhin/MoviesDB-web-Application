@@ -1,6 +1,15 @@
 <script setup>
 import casttv from '../components/Casttv.vue'
 import suggestedtv from '../components/Suggestedtv.vue'
+
+
+function reveal() {
+    for (var e = document.querySelectorAll(".reveal"), t = 0; t < e.length; t++) {
+        var o,
+            s = window.innerHeight;
+        e[t].getBoundingClientRect().top < s - 1 && e[t].classList.add("active");
+    }
+} setInterval(reveal, 1)
 </script>
 <template>
     <div class="info-container">
@@ -13,7 +22,7 @@ import suggestedtv from '../components/Suggestedtv.vue'
                             gradient="to top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.0)),linear-gradient(to right, rgba(0, 0, 0, 2), rgba(0, 0, 0, 0)),linear-gradient(to right, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0)"></v-parallax>
                     </div>
                 </transition>
-                <transition name="fade" mode="out-in" appear>
+                <transition name="slide-fade" appear>
                     <div :key="movie.id" v-if="movie"
                         class="absolute md:top-20 top-40   text text-left md:ml-12 ml-5 py-12 w-75">
                         <router-link :to="{ name: 'Infotv', params: { id: movie.id } }">
@@ -25,7 +34,7 @@ import suggestedtv from '../components/Suggestedtv.vue'
                             <v-rating readonly :length="5" :size="32" :model-value="Math.random() * (5 - 2) + 2"
                                 active-color="primary" />
                             <h4 class="font-weight-thin mr-4" style="margin-left: 0rem; padding: 4px;">{{
-                                movie.popularity }} Reviews
+                                movie.popularity.toFixed() }} Reviews
                             </h4>
                             <h4 class="font-weight-thin pa-1"> {{ movie.vote_count }} Votes</h4>
                             <h4 class="font-weight-thin pa-1"> {{ movie.first_air_date }} First release</h4>
@@ -152,6 +161,17 @@ import suggestedtv from '../components/Suggestedtv.vue'
         </transition>
     </div>
 </template>
+<style>
+.v-enter-active,
+.v-leave-active {
+    transition: opacity 3s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+    opacity: 0;
+}
+</style>
 <script>
 export default {
     data() {

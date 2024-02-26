@@ -85,7 +85,7 @@ import footer1 from "./components/footer.vue"
   <!--mobile-->
 
   <v-layout class="overflow-visible" style="height: 56px;" color="black">
-    <v-bottom-navigation v-if="$vuetify.display.mobile" grow>
+    <v-bottom-navigation v-if="$vuetify.display.mobile" grow class="bg-black">
 
       <v-btn to="/">
         <v-icon>mdi-home</v-icon>

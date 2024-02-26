@@ -1,5 +1,5 @@
 <template>
-    <div class="main px-10 text-2xl mt-10 flex">
+    <div class="main px-10 text-2xl mt-10 -mb-5 flex">
         <h1>Discover Movies</h1>
         <router-link class="text-sm my-auto px-5 text-sky-400" to="/discover">view all</router-link>
     </div>
@@ -57,7 +57,7 @@
 
 .movie-list {
     display: flex;
-    padding: 40px;
+    padding: 20px;
 }
 
 .movie-item {
@@ -67,7 +67,7 @@
 }
 
 .poster {
-    width: 28vh;
+    width: 25vh;
     height: 100%;
     padding: 0.1rem;
     height: fit-content;
