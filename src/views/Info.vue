@@ -141,6 +141,7 @@ export default {
                 const response = await fetch(url, options);
                 const data = await response.json();
                 this.movie = data;
+                document.title = `${this.movie.title} (${this.movie.release_date.slice(0, 4)})`;
             } catch (error) {
                 console.error(error);
             }

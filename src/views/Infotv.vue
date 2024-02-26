@@ -198,6 +198,7 @@ export default {
                 const response = await fetch(url, options);
                 const data = await response.json();
                 this.movie = data;
+                document.title = `${this.movie.name} (TV Series ${this.movie.first_air_date.slice(0, 4)}-${this.movie.last_air_date.slice(0, 4)})`;
             } catch (error) {
                 console.error(error);
             }

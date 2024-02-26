@@ -8,7 +8,10 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: HomeView,
+      meta: {
+        title: 'Browse latest updated Movies, TV shows'
+      }
     },
     {
       path: '/about',
@@ -16,7 +19,10 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
+      component: () => import('../views/AboutView.vue'),
+      meta: {
+        title: 'About'
+      }
     },
     {
       path: '/account',
@@ -24,7 +30,10 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('../views/Account.vue')
+      component: () => import('../views/Account.vue'),
+      meta: {
+        title: 'Account'
+      }
     },
     {
       path: '/discover',
@@ -32,7 +41,10 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('../views/Discover.vue')
+      component: () => import('../views/Discover.vue'),
+      meta: {
+        title: 'Discover Latest Movies, TV shows'
+      }
     },
     {
       path: '/info/:id',
@@ -50,4 +62,7 @@ const router = createRouter({
   },
 })
 
+router.beforeEach((to, from) => {
+  document.title = to.meta?.title ?? 'loading...'
+})
 export default router
