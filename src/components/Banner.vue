@@ -13,22 +13,23 @@
             </transition>
             <transition name="slide-fade" appear>
                 <div :key="randomMovie.id" v-if="randomMovie"
-                    class="absolute md:top-20 top-40   text text-left md:ml-12 ml-5 py-12 w-75">
+                    class="absolute md:top-20 top-40  text text-left md:ml-12 ml-5 py-12 w-75">
                     <router-link :to="{ name: 'Info', params: { id: randomMovie.id } }">
                         <p style="margin-left: 0rem; margin-top: 6rem;" class="md:text-4xl text-3xl  font-weight-bold">
                             {{
                                 randomMovie.title }}</p>
                     </router-link>
-                    <div class="rate d-lg-flex mt-5 mb-3" style="margin-left: 0rem;">
+                    <div class="rate d-lg-flex mt-5 mb-3" style="margin-left: 0rem;opacity: 0.9;">
                         <v-rating readonly :length="5" :size="32" :model-value="Math.floor(Math.random() * (5 - 2) + 2)"
                             active-color="primary" />
-                        <h4 class="font-weight-thin mr-4" style="margin-left: 0rem; padding: 4px;">{{
+                        <h4 class="font-weight-thin mr-" style="margin-left: 0rem; padding: 4px;">{{
                             randomMovie.popularity.toFixed() }} Reviews
                         </h4>
                         <h4 class="font-weight-thin pa-1"> {{ randomMovie.vote_count }} Votes</h4>
-                        <h4 class="font-weight-thin pa-1"> {{ randomMovie.release_date }} Released</h4>
+                        <h4 class="font-weight-thin pa-1"> {{ randomMovie.release_date.slice(0, 4) }}</h4>
                     </div>
-                    <p class="w-50 " v-if="!$vuetify.display.mobile">{{ randomMovie.overview.slice(0, 300) }}...</p>
+                    <p class="w-50 " v-if="!$vuetify.display.mobile" style="opacity: 0.9;">{{ randomMovie.overview.slice(0,
+                        300) }}...</p>
                 </div>
             </transition>
             <!-- Display other movie information here -->

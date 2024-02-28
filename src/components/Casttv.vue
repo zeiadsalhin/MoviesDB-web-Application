@@ -13,12 +13,12 @@
                 </button>
                 <div class="movie-list" ref="movieList">
                     <div v-for="person in movieCredits.cast" :key="person.id" class="person p-2">
-
-                        <v-img v-if="person.profile_path" :src="'https://image.tmdb.org/t/p/original' + person.profile_path"
-                            alt="Person" width="100%" height="100%"
-                            style=" width: 20vh;height: 100%;margin: 0.1rem;height: fit-content;"
-                            class="poster mx-auto hover:scale-105 transform transition ease-in-out duration-300"></v-img>
-                        <v-img v-else src="/error.svg"></v-img>
+                        <div class="imagecover" style=" width: 20vh;height: 100%;margin: 0.1rem;height: fit-content;"><v-img
+                                v-if="person.profile_path" :src="'https://image.tmdb.org/t/p/w342' + person.profile_path"
+                                alt="Person" width="100%" height="100%"
+                                class="poster mx-auto hover:scale-105 transform transition ease-in-out duration-300"></v-img>
+                            <v-img v-else src="/error.svg"></v-img>
+                        </div>
                         <h3 class="font-semibold md:text-md text-left py-2">{{ person.name }}</h3>
                         <p class="opacity-70 text-sm text-left">{{ person.character }}</p>
 

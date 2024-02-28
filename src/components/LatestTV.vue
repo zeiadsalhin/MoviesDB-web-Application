@@ -13,7 +13,7 @@
             <div class="movie-list" ref="movieList">
                 <div v-for="movie in visibleMovies" :key="movie.id" class="movie-item p-2">
                     <router-link :to="{ name: 'Infotv', params: { id: movie.id } }">
-                        <v-img v-if="movie.poster_path" :src="'https://image.tmdb.org/t/p/original' + movie.poster_path"
+                        <v-img v-if="movie.poster_path" :src="'https://image.tmdb.org/t/p/w342' + movie.poster_path"
                             alt="Movie Poster"
                             class="poster mx-auto hover:scale-105 transform transition ease-in-out duration-300"></v-img>
                         <h3 class="font-semibold md:text-lg p-3 mx-auto">{{ movie.name.slice(0, 16) }}</h3>

@@ -6,14 +6,14 @@
     <!-- <v-lazy> -->
     <!-- <div class="scrollh overflow-hidden"> -->
     <div class="scroll-container" ref="scrollContainer">
-        <button class="scroll-buttons left" @click="scrollLeft" v-show="scrollLeftButtonVisible"
+        <button class="scroll-button left" @click="scrollLeft" v-show="scrollLeftButtonVisible"
             v-if="!$vuetify.display.mobile">
             <v-icon icon="mdi-chevron-left"></v-icon>
         </button>
         <div class="movie-list" ref="movieList">
             <div v-for="movie in visibleMovies" :key="movie.id" class="movie-item p-2">
                 <router-link :to="{ name: 'Info', params: { id: movie.id } }">
-                    <v-img v-if="movie.poster_path" :src="'https://image.tmdb.org/t/p/original' + movie.poster_path"
+                    <v-img v-if="movie.poster_path" :src="'https://image.tmdb.org/t/p/w342' + movie.poster_path"
                         alt="Movie Poster"
                         class="poster mx-auto hover:scale-105 transform transition ease-in-out duration-300"></v-img>
                     <h3 class="font-semibold md:text-lg px-4 mt-2 mx-auto">{{ movie.title.slice(0, 16) }}</h3>
@@ -31,7 +31,7 @@
         <button class="text-xl bg-zinc-900 hover:bg-zinc-950 h-2/3 mt-10 px-4 mx-5 transform transition ease-in-out"
             @click="fetchNextPage">View
             full list&#8678;</button>
-        <button class="scroll-buttons right" @click="scrollRight" v-show="scrollRightButtonVisible"
+        <button class="scroll-button right" @click="scrollRight" v-show="scrollRightButtonVisible"
             v-if="!$vuetify.display.mobile">
             <v-icon icon="mdi-chevron-right"></v-icon>
         </button>
@@ -73,7 +73,7 @@
     height: fit-content;
 }
 
-.scroll-buttons {
+.scroll-button {
     position: sticky;
     z-index: 999;
     top: 50%;

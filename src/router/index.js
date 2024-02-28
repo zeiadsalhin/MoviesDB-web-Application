@@ -14,6 +14,14 @@ const router = createRouter({
       }
     },
     {
+      path: '/search',
+      name: 'search',
+      component: () => import('../views/Search.vue'),
+      meta: {
+        title: 'Search Top Movies and TV Shows'
+      }
+    },
+    {
       path: '/about',
       name: 'about',
       // route level code-splitting

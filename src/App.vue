@@ -64,15 +64,12 @@ import footer1 from "./components/footer.vue"
         <!-- <v-btn icon @Click="changetheme">
           <v-icon :icon="theme ? 'mdi-weather-night' : 'mdi-weather-sunny'"></v-icon>
         </v-btn> -->
-        <v-btn @click="search = !search" class="">
+        <v-btn to="/search" class="">
           <v-icon icon="mdi-magnify"></v-icon>
         </v-btn>
 
       </v-toolbar>
-      <v-fade-transition>
-        <v-text-field clearable v-if="search" variant="outlined" placeholder="Search"
-          class="absolute z-50 min-w-full bg-black h-14"></v-text-field>
-      </v-fade-transition>
+
       <v-fade-transition>
         <RouterView :key="$route.path" />
       </v-fade-transition>

@@ -13,11 +13,19 @@
                 <div class="movie-list" ref="movieList">
                     <div v-for="movie in visibleMovies" :key="movie.id" class="movie-item p-2">
                         <router-link :to="{ name: 'Info', params: { id: movie.id } }">
-                            <v-img v-if="movie.poster_path" :src="'https://image.tmdb.org/t/p/original' + movie.poster_path"
-                                alt="Movie Poster"
-                                class="poster mx-auto hover:scale-105 transform transition ease-in-out duration-300"></v-img>
-                            <v-img v-else src="/error.svg" class="poster bg-zinc-900"></v-img>
-                            <h3 class="font-semibold md:text-lg p-4 mx-auto">{{ movie.title }}</h3>
+                            <div class="imagecover poster mx-auto"><v-img v-if="movie.poster_path"
+                                    :src="'https://image.tmdb.org/t/p/w342' + movie.poster_path" alt="Movie Poster"
+                                    class="mx-auto hover:scale-105 transform transition ease-in-out duration-300"
+                                    width="100%"></v-img>
+                                <v-img v-else src="/error.svg" class="poster bg-zinc-900"></v-img>
+                            </div>
+
+                            <h3 v-if="movie.title.length < 16" class="font-semibold md:text-lg p-4 mx-auto">{{ movie.title
+                            }}
+                            </h3>
+                            <h3 v-else class="font-semibold md:text-lg p-4 mx-auto">{{ movie.title.substring(0, 15) + '..'
+                            }}
+                            </h3>
                             <!-- <p class="opacity-70 text-sm">Release Date:<br> {{ movie.first_air_date }}</p> -->
                             <v-rating v-if="!$vuetify.display.mobile" :model-value="Math.random() * (5 - 2) + 2" hover
                                 half-increments density="compact" size="small" color="blue-lighten-1"></v-rating>
