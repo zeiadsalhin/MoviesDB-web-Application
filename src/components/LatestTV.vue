@@ -6,7 +6,7 @@
     <!-- <v-lazy> -->
     <div class="scrollh overflow-hidden">
         <div class="scroll-container" ref="scrollContainer">
-            <button class="scroll-button left" @click="scrollLeft" v-show="scrollLeftButtonVisible"
+            <button class="scroll-buttons left" @click="scrollLeft" v-show="scrollLeftButtonVisible"
                 v-if="!$vuetify.display.mobile">
                 <v-icon icon="mdi-chevron-left"></v-icon>
             </button>
@@ -32,7 +32,7 @@
             <button class="text-xl bg-zinc-900 hover:bg-zinc-950 h-2/3 mt-10 px-4 mx-5 transform transition ease-in-out"
                 @click="fetchNextPage">View
                 full list&#8678;</button>
-            <button class="scroll-button right" @click="scrollRight" v-show="scrollRightButtonVisible"
+            <button class="scroll-buttons right" @click="scrollRight" v-show="scrollRightButtonVisible"
                 v-if="!$vuetify.display.mobile">
                 <v-icon icon="mdi-chevron-right"></v-icon>
             </button>
@@ -74,7 +74,7 @@
     height: fit-content;
 }
 
-.scroll-button {
+.scroll-buttons {
     position: sticky;
     z-index: 999;
     top: 50%;
