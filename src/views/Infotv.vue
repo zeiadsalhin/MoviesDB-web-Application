@@ -142,7 +142,7 @@ function reveal() {
                         </div>
                         <div class="duration flex space-x-10 mb-10 py-5">
                             <p class="my-auto">Watch</p>
-                            <a :href="`https://yts.mx/movies/${movie.title}`" target="_blank" title="yts.mx"
+                            <a :href="'https://www.google.com/search?q=yts.mx:' + movie.name" target="_blank" title="yts.mx"
                                 class="text-sky-700 underline my-auto">Watch now</a>
                         </div>
                     </div>

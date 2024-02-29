@@ -96,8 +96,8 @@ import suggested from '../components/Suggested.vue'
                         </div>
                         <div class="duration flex space-x-10 mb-10">
                             <p class="my-auto">Watch</p>
-                            <a :href="`https://yts.mx/movies/${movie.title}`" target="_blank" title="yts.mx"
-                                class="text-sky-700 underline my-auto">Watch now</a>
+                            <a :href="'https://yts.mx/movies/' + movie.title.toLowerCase().replace(/ /g, '-') + '-' + movie.release_date.slice(0, 4)"
+                                target="_blank" title="yts.mx" class="text-sky-700 underline my-auto">Watch now</a>
                         </div>
                     </div>
                 </div>
