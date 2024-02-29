@@ -25,7 +25,7 @@
                     </div>
                 </div>
                 <button class="scroll-button right" @click="scrollRight" v-show="scrollRightButtonVisible"
-                    v-if="!$vuetify.display.mobile && movieCredits.cast.length > 8">
+                    v-if="movieCredits.cast.length > 8">
                     <v-icon icon="mdi-chevron-right"></v-icon>
                 </button>
             </div>
@@ -113,7 +113,7 @@ export default {
                         Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzZmE1ZTFjNGYwNDljNmQ2ODk5NGUxNjFhMzkwMjdiZCIsInN1YiI6IjY1ZDJjY2QwZTA0ZDhhMDE3Yzk4NjkxNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.UBW80pSmqSl9C9aXlY6WfPmil2ielVKp8Iqczoa0vwA'
                     }
                 };
-                const url = `https://api.themoviedb.org/3/tv/${tvid}/credits?language=en-US`;
+                const url = `https://api.themoviedb.org/3/tv/${tvid}/aggregate_credits?language=en-US`;
 
                 const response = await fetch(url, options);
                 const data = await response.json();

@@ -3,6 +3,8 @@
 import banner from '../components/Banner.vue'
 import latest from "../components/LatestM.vue"
 import latest2 from "../components/LatestTV.vue"
+import trending from "../components/Trending.vue"
+import trendingtv from "../components/Trendingtv.vue"
 </script>
 
 <template>
@@ -21,6 +23,12 @@ import latest2 from "../components/LatestTV.vue"
     </transition>
     <transition name="fade" mode="out-in">
       <latest2 />
+    </transition>
+    <transition name="fade" mode="out-in">
+      <trending />
+    </transition>
+    <transition name="fade" mode="out-in">
+      <trendingtv />
     </transition>
   </main>
 </template>
