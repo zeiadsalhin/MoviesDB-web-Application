@@ -1,7 +1,7 @@
 <script setup>
 </script>
 <template>
-    <div class="cast md:flex md:p-10 p-1 md:space-x-10 bg-zinc-900 mt-5">
+    <div class="cast md:flex-col md:p-10 p-1 md:space-x-10 bg-zinc-900 mt-5">
         <div class="text text-3xl font-medium p-5">
             <h1>Cast</h1>
         </div>
@@ -25,11 +25,12 @@
                     </div>
                 </div>
                 <button class="scroll-button right" @click="scrollRight" v-show="scrollRightButtonVisible"
-                    v-if="movieCredits.cast.length > 8">
+                    v-if="!$vuetify.display.mobile && movieCredits.cast.length > 8">
                     <v-icon icon="mdi-chevron-right"></v-icon>
                 </button>
             </div>
             <div v-else class="flex justify-center m-auto p-5">Cannot find Cast</div>
+
         </v-lazy>
     </div>
 </template>
@@ -50,7 +51,7 @@
 
 .movie-list {
     display: flex;
-    padding: 20px;
+    padding: 0px;
 }
 
 .movie-item {

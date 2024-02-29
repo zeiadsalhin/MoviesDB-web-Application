@@ -31,7 +31,7 @@
         <div v-else class="flex justify-center m-auto p-5">Cannot find Cast</div>
     </div>
 </template>
-<style>
+<style scoped>
 ::-webkit-scrollbar {
     display: none;
 }
