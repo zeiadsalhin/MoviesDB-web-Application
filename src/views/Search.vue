@@ -144,9 +144,9 @@ export default {
         handleScroll() {
             const scrollPosition = window.innerHeight + window.pageYOffset;
             const pageHeight = document.documentElement.scrollHeight;
-            const bottomOffset = 20; // Add a small offset to trigger loading before reaching the absolute bottom
+            const bottomOffset = 20;
 
-            if (scrollPosition >= pageHeight - bottomOffset && !this.loading) {
+            if (scrollPosition >= pageHeight - bottomOffset && !this.loading && this.search != '') {
                 this.loadMoreResults();
             }
         },
