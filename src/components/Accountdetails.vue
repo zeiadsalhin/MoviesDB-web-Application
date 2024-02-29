@@ -54,6 +54,7 @@ export default {
             isloading: false,
             value1: '',
             Emailinfo: [],
+            avatarsrc: '',
         }
     },
     mounted() {

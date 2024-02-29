@@ -63,6 +63,26 @@ const router = createRouter({
       path: '/infotv/:id',
       name: 'Infotv',
       component: Infotv
+    },
+    {
+      path: '/movies',
+      name: 'movies',
+      component: () => import('../views/Movies.vue'),
+    },
+    {
+      path: '/favourites',
+      name: 'favourites',
+      component: () => import('../views/Favourites.vue'),
+    },
+    {
+      path: '/list',
+      name: 'list',
+      component: () => import('../views/List.vue'),
+    },
+    {
+      path: '/discovertv',
+      name: 'dtv',
+      component: () => import('../views/DiscoverTV.vue'),
     }
   ],
   scrollBehavior(to, from, savedPosition) {

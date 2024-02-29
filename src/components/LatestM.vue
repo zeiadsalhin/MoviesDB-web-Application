@@ -130,7 +130,7 @@ export default {
                 const data = await response.json();
                 this.movies = [...this.movies, ...data.results];
                 // this.rating = this.movies.vote_average
-                console.log(JSON.stringify(this.visibleMovies.vote_average))
+                // console.log(JSON.stringify(this.visibleMovies.vote_average))
                 this.totalPages = data.total_pages;
                 this.loadVisibleMovies();
             } catch (error) {

@@ -1,5 +1,5 @@
 <template>
-    <div class="main px-10 text-2xl mt-10 -mb-5 flex">
+    <div class="main px-5 text-2xl mt-10 -mb-5 flex">
         <h1>Trending Movies</h1>
         <router-link class="text-sm my-auto px-5 text-sky-400" to="/discover">view all</router-link>
     </div>
@@ -130,7 +130,7 @@ export default {
                 const data = await response.json();
                 this.movies = [...this.movies, ...data.results];
                 // this.rating = this.movies.vote_average
-                console.log(JSON.stringify(this.visibleMovies.vote_average))
+                // console.log(JSON.stringify(this.visibleMovies.vote_average))
                 this.totalPages = data.total_pages;
                 this.loadVisibleMovies();
             } catch (error) {
