@@ -16,39 +16,19 @@ import trendingtv from "../components/Trendingtv.vue"
       </div>
     </div>
     <transition name="fade" mode="out-in">
-      <div class="1">
-        <!-- <transition name="fade" mode="out-in"> -->
-        <banner />
-        <!-- </transition> -->
-      </div>
+      <banner />
     </transition>
     <transition name="fade" mode="out-in">
-      <div class="2">
-        <!-- <transition name="fade" mode="out-in"> -->
-        <latest />
-        <!-- </transition> -->
-      </div>
+      <latest />
     </transition>
     <transition name="fade" mode="out-in">
-      <div class="3">
-        <!-- <transition name="fade" mode="out-in"> -->
-        <latest2 />
-        <!-- </transition> -->
-      </div>
+      <latest2 />
     </transition>
     <transition name="fade" mode="out-in">
-      <div class="4">
-        <!-- <transition name="fade" mode="out-in"> -->
-        <trending />
-        <!-- </transition> -->
-      </div>
+      <trending />
     </transition>
     <transition name="fade" mode="out-in">
-      <div class="5">
-        <!-- <transition name="fade" mode="out-in"> -->
-        <trendingtv />
-        <!-- </transition> -->
-      </div>
+      <trendingtv />
     </transition>
   </main>
 </template>

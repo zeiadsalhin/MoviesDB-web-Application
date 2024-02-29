@@ -70,9 +70,9 @@ import footer1 from "./components/footer.vue"
 
       </v-toolbar>
 
-      <!-- <v-fade-transition> -->
-      <RouterView :key="$route.path" />
-      <!-- </v-fade-transition> -->
+      <v-fade-transition>
+        <RouterView :key="$route.path" />
+      </v-fade-transition>
       <footer1 />
 
     </v-main>
