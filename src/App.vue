@@ -33,8 +33,8 @@ import footer1 from "./components/footer.vue"
 <template>
   <!--Desktop-->
   <v-layout class="" color="black">
-    <v-navigation-drawer v-model="drawer" :rail="rail" :permanent="$vuetify.display.mobile != $vuetify.display.mobile"
-      color="black">
+    <v-navigation-drawer v-if="!$vuetify.display.mobile" v-model="drawer" :rail="rail"
+      :permanent="!$vuetify.display.mobile" color="black">
       <v-list-item :prepend-avatar="avatarsrc" :title="'Hello, ' + Accinfo.name" nav color="gray">
         <template v-slot:append>
           <v-btn variant="text" icon="mdi-chevron-left" @click.stop="rail = !rail"></v-btn>
