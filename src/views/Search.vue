@@ -144,7 +144,7 @@ export default {
         handleScroll() {
             const scrollPosition = window.innerHeight + window.pageYOffset;
             const pageHeight = document.documentElement.scrollHeight;
-            const bottomOffset = 20;
+            const bottomOffset = 10;
 
             if (scrollPosition >= pageHeight - bottomOffset && !this.loading && this.search != '') {
                 this.loadMoreResults();
