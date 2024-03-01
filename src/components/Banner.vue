@@ -13,7 +13,7 @@
             </transition>
             <transition name="slide-fade" appear>
                 <div :key="randomMovie.id" v-if="randomMovie"
-                    class="absolute md:top-20 top-40  text text-left md:ml-12 ml-5 py-12 w-75">
+                    class="absolute md:top-20 top-40       text text-left md:ml-12 ml-5 mt-12 w-75">
                     <router-link :to="{ name: 'Info', params: { id: randomMovie.id } }">
                         <p style="margin-left: 0rem; margin-top: 6rem;" class="md:text-4xl text-3xl  font-weight-bold">
                             {{
