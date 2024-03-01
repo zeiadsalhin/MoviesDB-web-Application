@@ -21,20 +21,20 @@
             <h1>Start Searching</h1>
         </div> -->
         <div v-if="results" class="movie-list flex justify-center" ref="movieList">
-            <div class="movie-row p-5">
+            <div class="movie-row p-1">
                 <div v-for="(result, index) in results" :key="result.id" class="movie-item justify-center"
-                    :style="{ flexBasis: 100 / 10 + '%' }">
+                    :style="{ flexBasis: 100 / 8 + '%' }" style="height: fit-content;">
                     <router-link :to="{ name: 'Info', params: { id: result.id } }">
-                        <div class="imagecover poster mx-auto" style="width: 35vh;height: fit-content;">
+                        <div class="imagecover poster mx-auto" style="width: 24vh;height: fit-content;">
                             <v-img v-if="result.poster_path && result.title"
                                 :src="'https://image.tmdb.org/t/p/w342' + result.poster_path" alt="Movie Poster"
                                 class="poster mx-auto hover:scale-105 transform transition ease-in-out duration-300"
                                 width="100%"></v-img>
                             <v-img v-else src="/error.svg" class="poster bg-zinc-900" width="100%"></v-img>
                         </div>
-                        <h3 class="font-semibold md:text-lg px-4 mt-2 mx-auto">{{ result.title }}</h3>
+                        <h3 class="md:text-lg px-4 mt-2 mx-auto">{{ result.title }}</h3>
                         <p v-if="result.title" class="opacity-70 text-sm">Released<br> {{ result.release_date }}</p>
-                        <h3 v-if="result.original_name" class="font-semibold md:text-lg px-4 mt-2 mx-auto">{{
+                        <h3 v-if="result.original_name" class="md:text-lg px-4 mt-2 mx-auto">{{
                             result.original_name }}</h3>
                     </router-link>
                 </div>
@@ -50,7 +50,7 @@
 </template>
 <style>
 .poster {
-    width: 25vh;
+    width: 20vh;
     height: 100%;
     padding: 0.1rem;
     height: fit-content;

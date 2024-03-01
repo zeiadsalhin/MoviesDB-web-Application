@@ -4,8 +4,7 @@
     <transition name="fade" mode="out-in">
         <div class="main">
             <div class=" w-11/12 mx-auto p-2">
-                <h1 class="text-2xl">{{ $route.params.id.charAt(0).toUpperCase() +
-                    $route.params.id.slice(1).replace('/', ' ') }}
+                <h1 class="text-2xl">Trending {{ $route.params.id.charAt(0).toUpperCase() + $route.params.id.slice(1) }}
                 </h1>
             </div>
             <div v-if="results" class="movie-list flex justify-center" ref="movieList">
@@ -127,7 +126,7 @@ export default {
                         Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzZmE1ZTFjNGYwNDljNmQ2ODk5NGUxNjFhMzkwMjdiZCIsInN1YiI6IjY1ZDJjY2QwZTA0ZDhhMDE3Yzk4NjkxNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.UBW80pSmqSl9C9aXlY6WfPmil2ielVKp8Iqczoa0vwA'
                     }
                 };
-                const url = `https://api.themoviedb.org/3/${this.$route.params.id.replace(/ /g, '/')}?include_adult=true&include_video=true&language=en-US&page=${this.currentPage}&sort_by=popularity.desc`;
+                const url = `https://api.themoviedb.org/3/trending/${this.$route.params.id.replace(/ /g, '/')}/day?language=en-US`;
                 const response = await fetch(url, options);
                 const data = await response.json();
                 this.results = this.results.concat(data.results);

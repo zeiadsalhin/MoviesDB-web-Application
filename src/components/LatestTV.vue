@@ -1,7 +1,8 @@
 <template>
     <div class="main px-10 text-2xl mt-10 -mb-5 flex">
         <h1>Discover TV Shows</h1>
-        <router-link class="text-sm my-auto px-5 text-sky-400" to="/discovertv">view all</router-link>
+        <router-link :to="{ name: 'discover', params: { id: 'discover/tv' } }" class="text-sm my-auto px-5 text-sky-400"
+            to="/discovertv">view all</router-link>
     </div>
     <!-- <v-lazy> -->
     <div class="scrollh overflow-hidden md:m-3">

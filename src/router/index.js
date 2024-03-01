@@ -44,12 +44,23 @@ const router = createRouter({
       }
     },
     {
-      path: '/discover',
+      path: '/discover/:id',
       name: 'discover',
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/Discover.vue'),
+      meta: {
+        title: 'Discover Latest Movies, TV shows'
+      }
+    }, ,
+    {
+      path: '/trending/:id',
+      name: 'trending',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/Discover2.vue'),
       meta: {
         title: 'Discover Latest Movies, TV shows'
       }
@@ -79,11 +90,6 @@ const router = createRouter({
       name: 'list',
       component: () => import('../views/List.vue'),
     },
-    {
-      path: '/discovertv',
-      name: 'dtv',
-      component: () => import('../views/DiscoverTV.vue'),
-    }
   ],
   scrollBehavior(to, from, savedPosition) {
     return { top: 0 }
