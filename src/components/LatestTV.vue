@@ -1,45 +1,47 @@
 <template>
-    <div class="main px-10 text-2xl mt-10 -mb-5 flex">
-        <h1>Discover TV Shows</h1>
-        <router-link :to="{ name: 'discover', params: { id: 'discover/tv' } }" class="text-sm my-auto text-sky-400"><button
-                class="m-2 my-auto">view all</button></router-link>
-    </div>
-    <!-- <v-lazy> -->
-    <div class="scrollh overflow-hidden md:m-3">
-        <div class="scroll-container" ref="scrollContainer">
-            <button class="scroll-button left" @click="scrollLeft" v-show="scrollLeftButtonVisible"
-                v-if="!$vuetify.display.mobile">
-                <v-icon icon="mdi-chevron-left"></v-icon>
-            </button>
-            <div class="movie-list" ref="movieList">
-                <div v-for="movie in visibleMovies" :key="movie.id" class="movie-item p-2" style="height: fit-content;">
-                    <router-link :to="{ name: 'Infotv', params: { id: movie.id } }">
-                        <v-img v-if="movie.poster_path" :src="'https://image.tmdb.org/t/p/w342' + movie.poster_path"
-                            alt="Movie Poster"
-                            class="poster mx-auto hover:scale-105 transform transition ease-in-out duration-300"></v-img>
-                        <h3 class="font-semibold md:text-lg p-3 mx-auto">{{ movie.name.slice(0, 16) }}</h3>
-                        <p class="opacity-70 text-sm">Release Date:<br> {{ movie.first_air_date }}</p>
-                        <v-rating v-if="!$vuetify.display.mobile" :model-value="Math.random() * (5 - 2) + 2" hover
-                            half-increments density="compact" size="small" color="blue-lighten-1"></v-rating>
-                        <p class="" v-if="$vuetify.display.mobile"><v-icon icon="mdi-star" size="x-small"
-                                class="my-auto"></v-icon>
-                            {{
-                                movie.vote_average.toFixed(1)
-                            }}</p>
-                        <!-- <p class="opacity-70 text-sm">Release Date:<br> {{ movie.release_date }}</p> -->
-                    </router-link>
-                </div>
-            </div>
-            <button class="text-xl bg-zinc-900 hover:bg-zinc-950 h-2/3 mt-10 px-4 mx-5 transform transition ease-in-out"
-                @click="fetchNextPage">View
-                full list&#8678;</button>
-            <button class="scroll-button right" @click="scrollRight" v-show="scrollRightButtonVisible"
-                v-if="!$vuetify.display.mobile">
-                <v-icon icon="mdi-chevron-right"></v-icon>
-            </button>
+    <div class="main mt-5">
+        <div class="main px-5 text-2xl mt- -mb-5 flex">
+            <h1 class="my-auto">Discover TV Shows</h1>
+            <router-link :to="{ name: 'discover', params: { id: 'discover/tv' } }"
+                class="text-sm my-auto text-sky-400"><button class="p-3 my-auto">view all</button></router-link>
         </div>
+        <!-- <v-lazy> -->
+        <div class="scrollh overflow-hidden md:m-3">
+            <div class="scroll-container" ref="scrollContainer">
+                <button class="scroll-button left" @click="scrollLeft" v-show="scrollLeftButtonVisible"
+                    v-if="!$vuetify.display.mobile">
+                    <v-icon icon="mdi-chevron-left"></v-icon>
+                </button>
+                <div class="movie-list" ref="movieList">
+                    <div v-for="movie in visibleMovies" :key="movie.id" class="movie-item p-2" style="height: fit-content;">
+                        <router-link :to="{ name: 'Infotv', params: { id: movie.id } }">
+                            <v-img v-if="movie.poster_path" :src="'https://image.tmdb.org/t/p/w342' + movie.poster_path"
+                                alt="Movie Poster"
+                                class="poster mx-auto hover:scale-105 transform transition ease-in-out duration-300"></v-img>
+                            <h3 class="font-semibold md:text-lg p-3 mx-auto">{{ movie.name.slice(0, 16) }}</h3>
+                            <p class="opacity-70 text-sm">Release Date:<br> {{ movie.first_air_date }}</p>
+                            <v-rating v-if="!$vuetify.display.mobile" :model-value="Math.random() * (5 - 2) + 2" hover
+                                half-increments density="compact" size="small" color="blue-lighten-1"></v-rating>
+                            <p class="" v-if="$vuetify.display.mobile"><v-icon icon="mdi-star" size="x-small"
+                                    class="my-auto"></v-icon>
+                                {{
+                                    movie.vote_average.toFixed(1)
+                                }}</p>
+                            <!-- <p class="opacity-70 text-sm">Release Date:<br> {{ movie.release_date }}</p> -->
+                        </router-link>
+                    </div>
+                </div>
+                <button class="text-xl bg-zinc-900 hover:bg-zinc-950 h-2/3 mt-10 px-4 mx-5 transform transition ease-in-out"
+                    @click="fetchNextPage">View
+                    full list&#8678;</button>
+                <button class="scroll-button right" @click="scrollRight" v-show="scrollRightButtonVisible"
+                    v-if="!$vuetify.display.mobile">
+                    <v-icon icon="mdi-chevron-right"></v-icon>
+                </button>
+            </div>
+        </div>
+        <!-- </v-lazy> -->
     </div>
-    <!-- </v-lazy> -->
 </template>
   
 <style scoped>
