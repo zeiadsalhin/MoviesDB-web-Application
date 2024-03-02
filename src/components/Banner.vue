@@ -1,5 +1,5 @@
 <template>
-    <div class="-mt-16">
+    <div class="-mt-">
         <div v-if="isloading" class="flex justify-center" style="height: 70vh;">
             <div class="load m-auto"><v-progress-circular indeterminate></v-progress-circular></div>
         </div>

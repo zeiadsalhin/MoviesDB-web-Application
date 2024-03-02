@@ -55,7 +55,7 @@ import footer1 from "./components/footer.vue"
       </v-list>
     </v-navigation-drawer>
     <v-main class=" align-center justify-center bg-black" style="min-height: 300px;" @Click="">
-      <v-toolbar density="default" class="absolute top-0 z-50 bg-transparent">
+      <v-toolbar density="default" class="sticky1 top-0 z-50 backdrop-blur-sm">
 
         <v-app-bar-nav-icon v-if="!$vuetify.display.mobile" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
         <!-- <v-spacer></v-spacer> -->
@@ -65,7 +65,7 @@ import footer1 from "./components/footer.vue"
           <v-icon :icon="theme ? 'mdi-weather-night' : 'mdi-weather-sunny'"></v-icon>
         </v-btn> -->
         <v-btn to="/search" class="">
-          <v-icon icon="mdi-magnify"></v-icon>
+          <v-icon color="white" icon="mdi-magnify"></v-icon>
         </v-btn>
 
       </v-toolbar>
@@ -173,4 +173,9 @@ const items = [
   { title: 'Click Me 2', icon: 'mdi-email' },
 ]
 </script>
-<style scoped></style>
+<style scoped>
+.sticky1 {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+</style>

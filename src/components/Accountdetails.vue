@@ -2,7 +2,7 @@
 
 </script>
 <template>
-    <div class="about p-1 md:p-10 flex-col justify-center h-fit bg-zinc-950 text-white reveal1">
+    <div class="about p-1 md:p-10 mt-20 flex-col justify-center h-fit bg-zinc-950 text-white reveal1">
         <h1 class="text-2xl md:text-4xl text-white text-center font-bold p-2">My Account</h1>
         <div class="w-1/4 h-1 mt-5 rounded-xl mx-auto bg-zinc-700 "></div>
         <div class="bg-zinc-950 mt-5 w-fit mx-auto">
