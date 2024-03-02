@@ -2,7 +2,7 @@
 </script>
 
 <template>
-    <div class="main mt-20">
+    <div class="main mt-20 h-fit">
         <div class="search-bar w-11/12 mx-auto">
             <input ref="search" v-model="search" type="search" name="search" id="search" @input="fetchResults"
                 placeholder="Search Movies, TV Shows..."
@@ -145,7 +145,7 @@ export default {
                 const response = await fetch(url, options);
                 const data = await response.json();
                 this.results = this.results.concat(data.results);
-                this.visibleResults = this.results.slice(0, this.currentPage * this.itemsPerPage);
+                this.visibleResults = this.results
                 this.currentPage++;
                 console.log(this.results);
             } catch (error) {
