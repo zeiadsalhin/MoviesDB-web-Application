@@ -23,27 +23,32 @@
         <div v-if="results" class="movie-list flex justify-center" ref="movieList">
             <div class="movie-row p-1">
                 <div v-for="(result, index) in results" :key="result.id" class="movie-item justify-center"
-                    :style="{ flexBasis: 100 / 8 + '%' }" style="height: fit-content;">
+                    :style="{ flexBasis: 100 / 7 + '%' }" style="height: fit-content;">
                     <router-link :to="{ name: 'Info', params: { id: result.id } }">
-                        <div class="imagecover poster mx-auto" style="width: 24vh;height: fit-content;">
+                        <div class="imagecover poster mx-auto" style="width:11rem;height: fit-content;">
                             <v-img v-if="result.poster_path && result.title"
                                 :src="'https://image.tmdb.org/t/p/w342' + result.poster_path" alt="Movie Poster"
                                 class="poster mx-auto hover:scale-105 transform transition ease-in-out duration-300"
                                 width="100%"></v-img>
                             <v-img v-else src="/error.svg" class="poster bg-zinc-900" width="100%"></v-img>
                         </div>
-                        <h3 class="md:text-lg px-4 mt-2 mx-auto">{{ result.title }}</h3>
-                        <p v-if="result.title" class="opacity-70 text-sm">Released<br> {{ result.release_date }}</p>
-                        <h3 v-if="result.original_name" class="md:text-lg px-4 mt-2 mx-auto">{{
-                            result.original_name }}</h3>
+                        <div class="text mx-auto" style="width: 11rem;">
+                            <h3 class="mx-1 mt-2">{{ result.title }}</h3>
+                            <p v-if="result.title" class="opacity-70 text-xs mx-1">Released<br> {{
+                                result.release_date.slice(0,
+                                    4) }}
+                            </p>
+                            <h3 v-if="result.original_name" class="mt-2 mx-1">{{
+                                result.original_name }}</h3>
+                        </div>
                     </router-link>
                 </div>
             </div>
         </div>
-        <div v-else class="flex justify-center" style="height: 70vh;">
+        <div v-else class="flex justify-center" style="height: 20vh;">
             <div class="load m-auto"><v-progress-circular indeterminate></v-progress-circular></div>
         </div>
-        <div v-if="loading" class="flex justify-center" style="height: 70vh;">
+        <div v-if="loading" class="flex justify-center" style="height: 20vh;">
             <div class="load m-auto"><v-progress-circular indeterminate></v-progress-circular></div>
         </div>
     </div>
