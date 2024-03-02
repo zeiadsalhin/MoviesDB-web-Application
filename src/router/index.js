@@ -1,7 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import NProgress from 'nprogress';
 import HomeView from '../views/HomeView.vue'
 import Info from '../views/Info.vue';
 import Infotv from '../views/Infotv.vue';
+const delay = 400
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -10,7 +12,8 @@ const router = createRouter({
       name: 'home',
       component: HomeView,
       meta: {
-        title: 'Browse latest updated Movies, TV shows'
+        title: 'Browse latest updated Movies, TV shows',
+        delay: delay,
       }
     },
     {
@@ -18,7 +21,8 @@ const router = createRouter({
       name: 'search',
       component: () => import('../views/Search.vue'),
       meta: {
-        title: 'Search Top Movies and TV Shows'
+        title: 'Search Top Movies and TV Shows',
+        delay: delay,
       }
     },
     {
@@ -29,7 +33,8 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/AboutView.vue'),
       meta: {
-        title: 'About'
+        title: 'About',
+        delay: delay,
       }
     },
     {
@@ -40,7 +45,8 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/Account.vue'),
       meta: {
-        title: 'Account'
+        title: 'Account',
+        delay: delay,
       }
     },
     {
@@ -51,7 +57,8 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/Discover.vue'),
       meta: {
-        title: 'Discover Latest Movies, TV shows'
+        title: 'Discover Latest Movies, TV shows',
+        delay: delay,
       }
     }, ,
     {
@@ -62,33 +69,49 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/Discover2.vue'),
       meta: {
-        title: 'Discover Latest Movies, TV shows'
+        title: 'Discover Latest Movies, TV shows',
+        delay: delay,
       }
     },
     {
       path: '/info/:id',
       name: 'Info',
-      component: Info
+      component: Info,
+      meta: {
+        delay: delay,
+      },
     },
     {
       path: '/infotv/:id',
       name: 'Infotv',
-      component: Infotv
+      component: Infotv,
+      meta: {
+        delay: delay,
+      },
     },
     {
       path: '/movies',
       name: 'movies',
       component: () => import('../views/Movies.vue'),
+      meta: {
+        delay: delay,
+      },
     },
     {
       path: '/favourites',
       name: 'favourites',
       component: () => import('../views/Favourites.vue'),
+      meta: {
+        delay: delay,
+      },
     },
     {
       path: '/list',
       name: 'list',
       component: () => import('../views/List.vue'),
+      meta: {
+        delay: delay,
+      },
     },
   ],
   scrollBehavior(to, from, savedPosition) {
@@ -96,7 +119,16 @@ const router = createRouter({
   },
 })
 
-router.beforeEach((to, from) => {
-  document.title = to.meta?.title ?? 'loading...'
+router.beforeEach(async (to, from, next) => {
+  const delay = to.meta.delay;
+
+  document.title = to.meta?.title ?? 'loading...',
+    NProgress.start();
+  await new Promise(resolve => setTimeout(resolve, delay));
+
+  next();
+});
+router.afterEach(() => {
+  NProgress.done();
 })
 export default router

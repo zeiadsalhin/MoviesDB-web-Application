@@ -111,6 +111,7 @@ import footer1 from "./components/footer.vue"
 export default {
   data() {
     return {
+      loading: false,
       search: null,
       drawer: false,
       rail: false,

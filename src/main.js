@@ -1,5 +1,6 @@
 import './assets/main.css'
 import './assets/index.css'
+import './assets/nprogress.css';
 
 import { createApp } from 'vue'
 import App from './App.vue'
