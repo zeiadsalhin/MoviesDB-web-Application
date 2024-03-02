@@ -107,7 +107,7 @@ export default {
         };
     },
     mounted() {
-        document.querySelector('search-bar').scrollIntoView({ behavior: 'smooth' });
+        this.$refs.search.scrollIntoView({ behavior: 'smooth' });
         this.$refs.search.focus();
         window.addEventListener('scroll', this.handleScroll);
     },
