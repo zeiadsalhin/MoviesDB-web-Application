@@ -2,7 +2,7 @@
 </script>
 
 <template>
-    <div class="main mt-20">
+    <div class="main mt-20 h-screen">
         <div class="search-bar w-11/12 mx-auto">
             <input ref="search" v-model="search" type="search" name="search" id="search" @input="fetchResults"
                 placeholder="Search Movies, TV Shows..."
@@ -108,7 +108,10 @@ export default {
     },
     mounted() {
         this.$refs.search.scrollIntoView({ behavior: 'smooth' });
-        this.$refs.search.focus();
+        setTimeout(() => {
+            this.$refs.search.focus();
+        }, 500);
+
         window.addEventListener('scroll', this.handleScroll);
     },
     beforeUnmount() {
