@@ -33,11 +33,11 @@ import footer1 from "./components/footer.vue"
 <template>
   <!--Desktop-->
   <v-layout class="" color="black">
-    <v-navigation-drawer v-if="!$vuetify.display.mobile" v-model="drawer" :rail="rail"
-      :permanent="!$vuetify.display.mobile" color="black">
+    <v-navigation-drawer v-if="!$vuetify.display.mobile" v-model="drawer" :rail="rail" class="navigate1" temporary
+      color="black">
       <v-list-item :prepend-avatar="avatarsrc" :title="'Hello, ' + Accinfo.name" nav color="gray">
         <template v-slot:append>
-          <v-btn variant="text" icon="mdi-chevron-left" @click.stop="rail = !rail"></v-btn>
+          <v-btn variant="text" icon="mdi-chevron-left" @click.stop="drawer = !drawer"></v-btn>
         </template>
       </v-list-item>
 
@@ -50,14 +50,14 @@ import footer1 from "./components/footer.vue"
         <v-list-item prepend-icon="mdi-heart" title="Favorites" value="favourites" to="/favourites"></v-list-item>
         <v-list-item prepend-icon="mdi-list-box" title="My list" value="list" to="/list"></v-list-item>
         <v-list-item prepend-icon="mdi-information" title="About" value="about" to="/about"></v-list-item>
-        <v-list-item v-if="rail" prepend-icon="mdi-chevron-right" title="" value="expand"
-          @click.stop="rail = !rail"></v-list-item>
+        <v-list-item prepend-icon="mdi-chevron-right" title="" value="expand" @click.stop="rail = !rail"></v-list-item>
       </v-list>
     </v-navigation-drawer>
     <v-main class=" align-center justify-center bg-black" style="min-height: 300px;" @Click="">
       <v-toolbar density="default" class="sticky1 top-0 z-50 backdrop-blur-sm">
 
-        <v-app-bar-nav-icon v-if="!$vuetify.display.mobile" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+        <v-app-bar-nav-icon v-if="!$vuetify.display.mobile" @click.stop="drawer = !drawer"
+          color="white"></v-app-bar-nav-icon>
         <!-- <v-spacer></v-spacer> -->
         <v-toolbar-title><img src="/logo.png" class="bg-white md:mx-auto" width="40" alt=""></v-toolbar-title>
         <!-- <v-spacer></v-spacer> -->
@@ -177,5 +177,6 @@ const items = [
 .sticky1 {
   position: fixed;
   background-color: rgba(0, 0, 0, 0.5);
+  /* width: 95vw; */
 }
 </style>

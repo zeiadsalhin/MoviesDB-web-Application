@@ -2,7 +2,7 @@
 </script>
 <template>
     <transition name="fade" mode="out-in">
-        <div class="main">
+        <div class="main mt-20">
             <div class=" w-11/12 mx-auto p-2">
                 <h1 class="text-2xl">{{ $route.params.id.charAt(0).toUpperCase() +
                     $route.params.id.slice(1).replace('/', ' ') }}
