@@ -2,7 +2,7 @@
 </script>
 
 <template>
-    <div class="main mt-20 h-screen">
+    <div class="main mt-20">
         <div class="search-bar w-11/12 mx-auto">
             <input ref="search" v-model="search" type="search" name="search" id="search" @input="fetchResults"
                 placeholder="Search Movies, TV Shows..."
