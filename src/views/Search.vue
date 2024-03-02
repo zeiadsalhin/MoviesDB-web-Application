@@ -1,10 +1,12 @@
 <script setup>
 </script>
+
 <template>
     <div class="main mt-20">
         <div class="search-bar w-11/12 mx-auto">
             <input ref="search" v-model="search" type="search" name="search" id="search" @input="fetchResults"
-                placeholder="Search Movies, TV Shows..." class="bg-zinc-800 p-5 outline-none w-full rounded-md text-lg" />
+                placeholder="Search Movies, TV Shows..."
+                class="bg-zinc-800 p-5 outline-none w-full rounded-md text-lg" />
             <button class="clear-button" @click="clearSearch" v-show="search.length > 0">
                 <svg width="256px" height="256px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -35,11 +37,11 @@
                         <div class="text mx-auto" style="width: 11rem;">
                             <h3 class="mx-1 mt-2">{{ result.title }}</h3>
                             <p v-if="result.title" class="opacity-70 text-xs mx-1">Released<br> {{
-                                result.release_date.slice(0,
-                                    4) }}
+                result.release_date.slice(0,
+                    4) }}
                             </p>
                             <h3 v-if="result.original_name" class="mt-2 mx-1">{{
-                                result.original_name }}</h3>
+                result.original_name }}</h3>
                         </div>
                     </router-link>
                 </div>
@@ -53,6 +55,7 @@
         </div>
     </div>
 </template>
+
 <style>
 .poster {
     width: 20vh;
@@ -90,6 +93,7 @@
     height: 1.8rem;
 }
 </style>
+
 <script>
 export default {
     data() {
@@ -104,7 +108,7 @@ export default {
     },
     mounted() {
         window.scrollTo({
-            top: 0,
+            top: 5,
             behavior: 'smooth',
         });
         this.$refs.search.focus();
