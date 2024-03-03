@@ -60,7 +60,31 @@ const router = createRouter({
         title: 'Discover Latest Movies, TV shows',
         delay: delay,
       }
-    }, ,
+    },
+    {
+      path: '/genres/:id/:name',
+      name: 'genre',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/DiscoverGenreM.vue'),
+      meta: {
+        title: `Discover Latest Movies by Genre`,
+        delay: delay,
+      },
+    },
+    {
+      path: '/:id/:name',
+      name: 'top',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/TopRated.vue'),
+      meta: {
+        title: `Discover Top Rated Movies, TV Shows`,
+        delay: delay,
+      },
+    },
     {
       path: '/trending/:id',
       name: 'trending',
@@ -94,6 +118,7 @@ const router = createRouter({
       name: 'movies',
       component: () => import('../views/Movies.vue'),
       meta: {
+        title: 'Discover Latest Movies',
         delay: delay,
       },
     },

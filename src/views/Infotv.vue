@@ -11,6 +11,7 @@ function reveal() {
     }
 } setInterval(reveal, 1)
 </script>
+
 <template>
     <div class="info-container">
         <transition name="fade" mode="out-in">
@@ -18,30 +19,32 @@ function reveal() {
                 <transition name="fade" mode="out-in">
                     <div :key="movie.id" v-if="movie">
                         <v-parallax id="par" :src="`https://image.tmdb.org/t/p/original${movie.backdrop_path}`"
-                            class="movie-item fade-in"
-                            gradient="to top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.0)),linear-gradient(to right, rgba(0, 0, 0, 2), rgba(0, 0, 0, 0)),linear-gradient(to right, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0)"></v-parallax>
+                            class="movie-item fade-in" gradient="to top, rgba(0, 0, 0, 2), rgba(0, 0, 0, 0.3)"
+                            style="filter: opacity(0.8);"></v-parallax>
                     </div>
                 </transition>
                 <transition name="slide-fade" appear>
                     <div :key="movie.id" v-if="movie"
                         class="absolute md:top-20 top-40   text text-left md:ml-12 ml-5 py-12 w-75">
                         <router-link :to="{ name: 'Infotv', params: { id: movie.id } }">
-                            <p style="margin-left: 0rem; margin-top: 6rem;" class="md:text-4xl text-3xl  font-weight-bold">
+                            <p style="margin-left: 0rem; margin-top: 6rem;"
+                                class="md:text-4xl text-3xl  font-weight-bold">
                                 {{
-                                    movie.name }}</p>
+                        movie.name }}</p>
                         </router-link>
                         <div class="rate d-lg-flex mt-5 mb-3" style="margin-left: 0rem;">
                             <v-rating readonly :length="5" :size="32" :model-value="Math.random() * (5 - 2) + 2"
                                 active-color="primary" />
                             <h4 class="font-weight-thin mr-4" style="margin-left: 0rem; padding: 4px;">{{
-                                movie.popularity.toFixed() }} Reviews
+                        movie.popularity.toFixed() }} Reviews
                             </h4>
                             <h4 class="font-weight-thin pa-1"> {{ movie.vote_count }} Votes</h4>
                             <h4 class="font-weight-thin pa-1"> {{ movie.first_air_date }} First release</h4>
                         </div>
                         <p class="w-50 " v-if="!$vuetify.display.mobile">{{ movie.overview.slice(0, 300) }}...</p>
                     </div>
-                    <div v-else class="text-center mx-auto"><v-progress-circular indeterminate></v-progress-circular></div>
+                    <div v-else class="text-center mx-auto"><v-progress-circular indeterminate></v-progress-circular>
+                    </div>
                 </transition>
             </div>
         </transition>
@@ -124,7 +127,8 @@ function reveal() {
                             </div>
                             <div class="r md:flex md:space-x-5 space-y-2 md:space-y-0">
                                 <div v-for="company in movie.production_companies" :key="company.id" class="">
-                                    <img :src="'https://image.tmdb.org/t/p/original' + company.logo_path" width="40" alt="">
+                                    <img :src="'https://image.tmdb.org/t/p/original' + company.logo_path" width="40"
+                                        alt="">
                                     <p class="opacity-80 mx-auto">{{ company.name }}</p>
                                 </div>
                             </div>
@@ -135,15 +139,16 @@ function reveal() {
                             </div>
                             <div class="r md:flex md:space-x-5 space-y-2 md:space-y-0">
                                 <div v-for="company in movie.production_countries" :key="company.id" class="">
-                                    <img :src="'https://image.tmdb.org/t/p/original' + company.logo_path" width="40" alt="">
+                                    <img :src="'https://image.tmdb.org/t/p/original' + company.logo_path" width="40"
+                                        alt="">
                                     <p class="opacity-80 mx-auto">{{ company.name }} - {{ company.iso_3166_1 }}</p>
                                 </div>
                             </div>
                         </div>
                         <div class="duration flex space-x-10 mb-10 py-5">
                             <p class="my-auto">Watch</p>
-                            <a :href="'https://www.google.com/search?q=yts.mx:' + movie.name" target="_blank" title="yts.mx"
-                                class="text-sky-700 underline my-auto">Watch now</a>
+                            <a :href="'https://www.google.com/search?q=yts.mx:' + movie.name" target="_blank"
+                                title="yts.mx" class="text-sky-700 underline my-auto">Watch now</a>
                         </div>
                     </div>
                 </div>
@@ -161,6 +166,7 @@ function reveal() {
         </transition>
     </div>
 </template>
+
 <style>
 .v-enter-active,
 .v-leave-active {
@@ -172,6 +178,7 @@ function reveal() {
     opacity: 0;
 }
 </style>
+
 <script>
 export default {
     data() {

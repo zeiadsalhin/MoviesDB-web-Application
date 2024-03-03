@@ -1,8 +1,8 @@
 <template>
-    <div class="main mt-5">
+    <div class="main mt-12">
         <div class="main px-5 text-2xl mt- -mb-5 flex">
-            <h1 class="my-auto">Discover TV Shows</h1>
-            <router-link :to="{ name: 'discover', params: { id: 'discover/tv' } }"
+            <h1 class="my-auto">Top Rated Movies </h1>
+            <router-link :to="{ name: 'top', params: { id: 'movie', name: 'Top Rated Movies' } }"
                 class="text-sm my-auto text-sky-400"><button class="p-3 my-auto">view all</button></router-link>
         </div>
         <!-- <v-lazy> -->
@@ -15,12 +15,16 @@
                 <div class="movie-list" ref="movieList">
                     <div v-for="movie in visibleMovies" :key="movie.id" class="movie-item p-2"
                         style="height: fit-content;">
-                        <router-link :to="{ name: 'Infotv', params: { id: movie.id } }">
+                        <router-link :to="{ name: 'Info', params: { id: movie.id } }">
                             <v-img v-if="movie.poster_path" :src="'https://image.tmdb.org/t/p/w342' + movie.poster_path"
                                 alt="Movie Poster"
                                 class="poster mx-auto hover:scale-105 transform transition ease-in-out duration-300"></v-img>
-                            <h3 class="font-semibold md:text-lg p-3 mx-auto">{{ movie.name.slice(0, 16) }}</h3>
-                            <p class="opacity-70 text-sm">Release Date:<br> {{ movie.first_air_date }}</p>
+                            <h3 v-if="movie.title.length < 16" class="font-semibold md:text-lg p-4 mx-auto">
+                                {{ movie.title }}
+                            </h3>
+                            <h3 v-else class="font-semibold md:text-lg p-4 mx-auto">{{ movie.title.substring(0, 15) +
+                '..' }}
+                            </h3>
                             <v-rating v-if="!$vuetify.display.mobile" :model-value="Math.random() * (5 - 2) + 2" hover
                                 half-increments density="compact" size="small" color="blue-lighten-1"></v-rating>
                             <p class="" v-if="$vuetify.display.mobile"><v-icon icon="mdi-star" size="x-small"
@@ -28,7 +32,7 @@
                                 {{
                 movie.vote_average.toFixed(1)
             }}</p>
-                            <!-- <p class="opacity-70 text-sm">Release Date:<br> {{ movie.release_date }}</p> -->
+                            <p class="opacity-70 text-sm">Released<br> {{ movie.release_date }}</p>
                         </router-link>
                     </div>
                 </div>
@@ -109,6 +113,7 @@ export default {
     data() {
         return {
             movies: [],
+            // rating: this.visibleMovies.vote_average,
             visibleMovies: [],
             currentPage: 1,
             pageSize: 20,
@@ -131,7 +136,7 @@ export default {
             };
 
             try {
-                const response = await fetch(`https://api.themoviedb.org/3/discover/tv?include_adult=true&include_video=true&language=en-US&page=${this.currentPage}&sort_by=popularity.desc`, options);
+                const response = await fetch(`https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=${this.currentPage}`, options);
                 const data = await response.json();
                 this.movies = [...this.movies, ...data.results];
                 this.totalPages = data.total_pages;

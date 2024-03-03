@@ -89,7 +89,7 @@ import footer1 from "./components/footer.vue"
         Home
       </v-btn>
 
-      <v-btn to="/about">
+      <v-btn to="/movies">
         <v-icon>mdi-filmstrip</v-icon>
         Movies
       </v-btn>
@@ -107,6 +107,7 @@ import footer1 from "./components/footer.vue"
     </v-bottom-navigation>
   </v-layout>
 </template>
+
 <script>
 export default {
   data() {
@@ -174,6 +175,7 @@ const items = [
   { title: 'Click Me 2', icon: 'mdi-email' },
 ]
 </script>
+
 <style scoped>
 .sticky1 {
   position: fixed;
