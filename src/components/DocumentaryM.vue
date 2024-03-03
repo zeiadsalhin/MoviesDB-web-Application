@@ -12,7 +12,10 @@
                     v-if="!$vuetify.display.mobile">
                     <v-icon icon="mdi-chevron-left"></v-icon>
                 </button>
-                <div class="movie-list" ref="movieList">
+                <div v-if="loading" class="flex justify-center mt-5" style="width: 100%;height: 50vh;">
+                    <div class="load m-auto"><v-progress-circular indeterminate></v-progress-circular></div>
+                </div>
+                <div v-else class="movie-list" ref="movieList">
                     <div v-for="movie in visibleMovies" :key="movie.id" class="movie-item p-2"
                         style="height: fit-content;">
                         <router-link :to="{ name: 'Info', params: { id: movie.id } }">
@@ -31,10 +34,6 @@
                         </router-link>
                     </div>
                 </div>
-                <button
-                    class="text-xl bg-zinc-900 hover:bg-zinc-950 h-2/3 mt-10 px-4 mx-5 transform transition ease-in-out"
-                    @click="fetchNextPage">View
-                    full list&#8678;</button>
                 <button class="scroll-button right" @click="scrollRight" v-show="scrollRightButtonVisible"
                     v-if="!$vuetify.display.mobile">
                     <v-icon icon="mdi-chevron-right"></v-icon>
@@ -107,8 +106,8 @@
 export default {
     data() {
         return {
+            loading: true,
             movies: [],
-            // rating: this.visibleMovies.vote_average,
             visibleMovies: [],
             currentPage: 1,
             pageSize: 20,
@@ -134,10 +133,9 @@ export default {
                 const response = await fetch(`https://api.themoviedb.org/3/discover/movie?&page=${this.currentPage}&with_genres=99`, options);
                 const data = await response.json();
                 this.movies = [...this.movies, ...data.results];
-                // this.rating = this.movies.vote_average
-                // console.log(JSON.stringify(this.visibleMovies.vote_average))
                 this.totalPages = data.total_pages;
                 this.loadVisibleMovies();
+                this.loading = false
             } catch (error) {
                 console.error(error);
             }
