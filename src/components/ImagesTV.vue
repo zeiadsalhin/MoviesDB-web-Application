@@ -95,7 +95,7 @@ export default {
                         Authorization: import.meta.env.VITE_API_KEY
                     }
                 };
-                const url = `https://api.themoviedb.org/3/movie/${movieId}/images`;
+                const url = `https://api.themoviedb.org/3/tv/${movieId}/images`;
 
                 const response = await fetch(url, options);
                 const data = await response.json();
@@ -118,7 +118,7 @@ export default {
                         Authorization: import.meta.env.VITE_API_KEY
                     }
                 };
-                const url = `https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`;
+                const url = `https://api.themoviedb.org/3/tv/${movieId}/videos?language=en-US`;
                 const response = await fetch(url, options);
                 const data = await response.json();
                 if (data.results && data.results.length > 0) {

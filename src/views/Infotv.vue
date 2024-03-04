@@ -1,4 +1,5 @@
 <script setup>
+import images from '../components/ImagesTV.vue'
 import casttv from '../components/Casttv.vue'
 import suggestedtv from '../components/Suggestedtv.vue'
 
@@ -154,10 +155,13 @@ function reveal() {
                 </div>
             </div>
         </transition>
+        <div class="overviewtext md:flex md:p-10 p-1 space-x-10 bg-zinc-900 mt-5">
+            <images />
+        </div>
         <transition name="fade" mode="out-in">
-            <v-lazy>
-                <casttv />
-            </v-lazy>
+            <!-- <v-lazy> -->
+            <casttv />
+            <!-- </v-lazy> -->
         </transition>
         <transition name="fade" mode="out-in">
             <v-lazy>
@@ -183,7 +187,7 @@ function reveal() {
 export default {
     data() {
         return {
-            movie: null
+            movie: null,
         };
     },
     mounted() {
