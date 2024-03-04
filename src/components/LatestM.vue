@@ -13,7 +13,8 @@
                     <v-icon icon="mdi-chevron-left"></v-icon>
                 </button>
                 <div class="movie-list" ref="movieList">
-                    <div v-for="movie in visibleMovies" :key="movie.id" class="movie-item p-2" style="height: fit-content;">
+                    <div v-for="movie in visibleMovies" :key="movie.id" class="movie-item p-2"
+                        style="height: fit-content;">
                         <router-link :to="{ name: 'Info', params: { id: movie.id } }">
                             <v-img v-if="movie.poster_path" :src="'https://image.tmdb.org/t/p/w342' + movie.poster_path"
                                 alt="Movie Poster"
@@ -24,13 +25,14 @@
                             <p class="" v-if="$vuetify.display.mobile"><v-icon icon="mdi-star" size="x-small"
                                     class="my-auto"></v-icon>
                                 {{
-                                    movie.vote_average.toFixed(1)
-                                }}</p>
+                movie.vote_average.toFixed(1)
+            }}</p>
                             <p class="opacity-70 text-sm">Released<br> {{ movie.release_date }}</p>
                         </router-link>
                     </div>
                 </div>
-                <button class="text-xl bg-zinc-900 hover:bg-zinc-950 h-2/3 mt-10 px-4 mx-5 transform transition ease-in-out"
+                <button
+                    class="text-xl bg-zinc-900 hover:bg-zinc-950 h-2/3 mt-10 px-4 mx-5 transform transition ease-in-out"
                     @click="fetchNextPage">View
                     full list&#8678;</button>
                 <button class="scroll-button right" @click="scrollRight" v-show="scrollRightButtonVisible"
@@ -42,7 +44,7 @@
         <!-- </v-lazy> -->
     </div>
 </template>
-  
+
 <style scoped>
 ::-webkit-scrollbar {
     display: none;
@@ -100,7 +102,7 @@
     right: 0px;
 }
 </style>
-  
+
 <script>
 export default {
     data() {
@@ -124,7 +126,7 @@ export default {
                 method: 'GET',
                 headers: {
                     accept: 'application/json',
-                    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzZmE1ZTFjNGYwNDljNmQ2ODk5NGUxNjFhMzkwMjdiZCIsInN1YiI6IjY1ZDJjY2QwZTA0ZDhhMDE3Yzk4NjkxNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.UBW80pSmqSl9C9aXlY6WfPmil2ielVKp8Iqczoa0vwA',
+                    Authorization: import.meta.env.VITE_API_KEY
                 },
             };
 

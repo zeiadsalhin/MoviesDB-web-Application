@@ -1,5 +1,5 @@
 <script setup>
-import banner from '../components/Banner.vue'
+// import banner from '../components/Banner.vue'
 import cast from '../components/Cast.vue'
 import suggested from '../components/Suggested.vue'
 </script>
@@ -143,7 +143,7 @@ export default {
                     method: 'GET',
                     headers: {
                         accept: 'application/json',
-                        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzZmE1ZTFjNGYwNDljNmQ2ODk5NGUxNjFhMzkwMjdiZCIsInN1YiI6IjY1ZDJjY2QwZTA0ZDhhMDE3Yzk4NjkxNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.UBW80pSmqSl9C9aXlY6WfPmil2ielVKp8Iqczoa0vwA'
+                        Authorization: import.meta.env.VITE_API_KEY
                     }
                 };
                 const url = `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`;

@@ -21,24 +21,26 @@
                             </div>
 
                             <h3 v-if="movie.original_name.length < 16" class="font-semibold md:text-lg p-2 mx-auto">{{
-                                movie.original_name }}
+            movie.original_name }}
                             </h3>
-                            <h3 v-else class="font-semibold md:text-lg p-2 mx-auto">{{ movie.original_name.substring(0, 15)
-                                + '..'
-                            }}</h3>
+                            <h3 v-else class="font-semibold md:text-lg p-2 mx-auto">{{ movie.original_name.substring(0,
+            15)
+            + '..'
+                                }}</h3>
                             <p class="opacity-70 text-sm">Release Date:<br> {{ movie.first_air_date.slice(0, 4) }}</p>
                             <v-rating v-if="!$vuetify.display.mobile" :model-value="Math.random() * (5 - 2) + 2" hover
                                 half-increments density="compact" size="small" color="blue-lighten-1"></v-rating>
                             <p class="mt-1" v-if="$vuetify.display.mobile"><v-icon icon="mdi-star" size="x-small"
                                     class="my-auto"></v-icon>
                                 {{
-                                    movie.vote_average.toFixed(1)
-                                }}</p>
+            movie.vote_average.toFixed(1)
+        }}</p>
                             <!-- <p class="opacity-70 text-sm">Release Date:<br> {{ movie.release_date }}</p> -->
                         </router-link>
                     </div>
                 </div>
-                <button class="text-xl bg-zinc-900 hover:bg-zinc-950 h-2/3 mt-10 px-4 mx-5 transform transition ease-in-out"
+                <button
+                    class="text-xl bg-zinc-900 hover:bg-zinc-950 h-2/3 mt-10 px-4 mx-5 transform transition ease-in-out"
                     @click="fetchNextPage">View
                     full list&#8678;</button>
                 <button class="scroll-button right" @click="scrollRight" v-show="scrollRightButtonVisible"
@@ -50,7 +52,7 @@
         <div v-else class="flex justify-center m-auto p-5">Cannot find similar Shows</div>
     </v-lazy>
 </template>
-  
+
 <style scoped>
 ::-webkit-scrollbar {
     display: none;
@@ -108,7 +110,7 @@
     right: 0px;
 }
 </style>
-  
+
 <script>
 export default {
     data() {
@@ -132,7 +134,7 @@ export default {
                 method: 'GET',
                 headers: {
                     accept: 'application/json',
-                    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzZmE1ZTFjNGYwNDljNmQ2ODk5NGUxNjFhMzkwMjdiZCIsInN1YiI6IjY1ZDJjY2QwZTA0ZDhhMDE3Yzk4NjkxNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.UBW80pSmqSl9C9aXlY6WfPmil2ielVKp8Iqczoa0vwA',
+                    Authorization: import.meta.env.VITE_API_KEY
                 },
             };
 

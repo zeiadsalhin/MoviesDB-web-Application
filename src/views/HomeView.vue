@@ -1,6 +1,6 @@
 <script setup>
 // import TheWelcome from '../components/TheWelcome.vue'
-import banner from '../components/Banner.vue'
+// import banner from '../components/Banner.vue'
 import latest from "../components/LatestM.vue"
 import latest2 from "../components/LatestTV.vue"
 import trending from "../components/Trending.vue"
@@ -94,7 +94,7 @@ export default {
           method: 'GET',
           headers: {
             accept: 'application/json',
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzZmE1ZTFjNGYwNDljNmQ2ODk5NGUxNjFhMzkwMjdiZCIsInN1YiI6IjY1ZDJjY2QwZTA0ZDhhMDE3Yzk4NjkxNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.UBW80pSmqSl9C9aXlY6WfPmil2ielVKp8Iqczoa0vwA'
+            Authorization: import.meta.env.VITE_API_KEY
           }
         };
         const url = ("https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc")
