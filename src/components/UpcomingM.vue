@@ -25,8 +25,8 @@
                             <h3 v-if="movie.title.length < 16" class="font-semibold md:text-lg py-1 mx-auto">
                                 {{ movie.title }}
                             </h3>
-                            <h3 v-else class="font-semibold md:text-lg py-1 mx-auto">{{ movie.title.substring(0, 15) +
-                '..' }}
+                            <h3 v-else class="font-semibold md:text-lg py-1 mx-auto">{{ movie.title.substring(0,
+                15) + '..' }}
                             </h3>
                             <v-rating v-if="!$vuetify.display.mobile" :model-value="Math.random() * (5 - 2) + 2" hover
                                 half-increments density="compact" size="small" color="blue-lighten-1"></v-rating>
