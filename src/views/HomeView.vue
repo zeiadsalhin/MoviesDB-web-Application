@@ -25,7 +25,7 @@ import trendingtv from "../components/Trendingtv.vue"
             <div :key="randomMovie.id" v-if="randomMovie">
               <v-parallax id="par" :src="`https://image.tmdb.org/t/p/original${randomMovie.backdrop_path}`"
                 class="movie-item fade-in" gradient="to top, rgba(0, 0, 0, 2), rgba(0, 0, 0, 0.3)"
-                style="filter: opacity(0.8);"></v-parallax>
+                style=""></v-parallax>
             </div>
           </transition>
           <transition name="slide-fade" appear>
