@@ -1,5 +1,5 @@
 <script setup>
-// import banner from '../components/Banner.vue'
+import images from '../components/ImagesM.vue'
 import cast from '../components/Cast.vue'
 import suggested from '../components/Suggested.vue'
 </script>
@@ -112,10 +112,15 @@ import suggested from '../components/Suggested.vue'
                 </div>
             </div>
         </transition>
+
+        <div class="overviewtext md:flex md:p-10 p-1 space-x-10 bg-zinc-900 mt-5">
+            <images />
+        </div>
+
         <transition name="fade" mode="out-in">
-            <v-lazy>
-                <cast />
-            </v-lazy>
+            <!-- <v-lazy> -->
+            <cast />
+            <!-- </v-lazy> -->
         </transition>
         <transition name="fade" mode="out-in">
             <v-lazy>
