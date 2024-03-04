@@ -43,15 +43,15 @@
                                         {{
                     result.vote_average.toFixed(1)
                 }}</p>
-                                    <p v-if="result.title" class="opacity-70 text-sm mx-1">Released<br> {{
+                                    <p v-if="result.title" class="opacity-70 text-sm">Released<br> {{
                     result.release_date }}
                                     </p>
-                                    <h3 v-if="result.original_name" class="font-semibold md:text-lg px-4 mt-2 mx-auto">
+                                    <h3 v-if="result.original_name" class="font-semibold md:text-lg py-1 mx-1">
                                         {{
                     result.original_name }}</h3>
                                 </div>
                                 <div v-if="result.name" class="vshowtv">
-                                    <h3 class="font-semibold md:text-lg p-3 mx-auto">{{ result.name.slice(0, 16) }}</h3>
+                                    <h3 class="font-semibold md:text-lg py-1 mx-1">{{ result.name.slice(0, 16) }}</h3>
                                     <p class="opacity-70 text-sm">Release Date:<br> {{ result.first_air_date }}</p>
                                     <v-rating v-if="!$vuetify.display.mobile" :model-value="Math.random() * (5 - 2) + 2"
                                         hover half-increments density="compact" size="small"
@@ -79,7 +79,7 @@
 
 <style>
 .poster {
-    width: 20vh;
+    /* width: 20vh; */
     height: 100%;
     padding: 0.1rem;
     height: fit-content;
@@ -136,7 +136,7 @@ export default {
                         Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzZmE1ZTFjNGYwNDljNmQ2ODk5NGUxNjFhMzkwMjdiZCIsInN1YiI6IjY1ZDJjY2QwZTA0ZDhhMDE3Yzk4NjkxNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.UBW80pSmqSl9C9aXlY6WfPmil2ielVKp8Iqczoa0vwA'
                     }
                 };
-                const url = `https://api.themoviedb.org/3/discover/movie?&page=${this.currentPage}&with_genres=${this.$route.params.id}`;
+                const url = `https://api.themoviedb.org/3/${this.$route.params.id}/upcoming?language=en-US&page=${this.currentPage}`;
                 const response = await fetch(url, options);
                 const data = await response.json();
                 this.results = this.results.concat(data.results);
