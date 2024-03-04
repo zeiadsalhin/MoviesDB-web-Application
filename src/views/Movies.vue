@@ -1,4 +1,5 @@
 <script setup>
+import UpM from "../components/UpcomingM.vue"
 import TopRM from "../components/TopRM.vue"
 import ActionM from "../components/ActionM.vue"
 import AdvM from "../components/AdventureM.vue"
@@ -23,7 +24,11 @@ import TopRTV from "../components/TopRTV.vue"
             <v-progress-circular indeterminate></v-progress-circular>
         </div>
     </div>
-    <div v-else style="scale: 0.9;" class="-mt-80">
+    <div v-else style="scale: 0.9;" class="-mt-80 -mb-96 mx-auto -space-x-4 ">
+        <div class="h1 text-3xl text-center">Browse Movies and TV</div>
+        <transition name="fade" mode="out-in">
+            <UpM />
+        </transition>
         <transition name="fade" mode="out-in">
             <TopRM />
         </transition>

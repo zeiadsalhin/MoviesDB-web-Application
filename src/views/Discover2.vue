@@ -1,5 +1,6 @@
 <script setup>
 </script>
+
 <template>
     <transition name="fade" mode="out-in">
         <div class="main mt-20">
@@ -12,7 +13,7 @@
                     <div v-for="(result, index) in  results " :key="result.id" class="movie-item justify-center"
                         :style="{ flexBasis: 100 / 8 + '%' }" style="height: fit-content;">
                         <router-link :to="{ name: 'Info', params: { id: result.id } }">
-                            <div class="imagecover poster mx-auto" style="width: 24vh;height: fit-content;">
+                            <div class="imagecover poster mx-auto" style="width: 11rem;height: fit-content;">
                                 <v-img v-if="result.poster_path && result.title"
                                     :src="'https://image.tmdb.org/t/p/w342' + result.poster_path" alt="Movie Poster"
                                     class="poster mx-auto hover:scale-105 transform transition ease-in-out duration-300"
@@ -24,36 +25,44 @@
                                 <v-img v-if="result.poster_path == ''" src="/error.svg" class="poster bg-zinc-900"
                                     width="100%"></v-img>
                             </div>
-                            <div v-if="result.title" class="vshow">
-                                <h3 v-if="result.title.length < 16" class="md:text-lg py-1 mx-auto">{{
-                                    result.title
-                                }}
-                                </h3>
-                                <h3 v-else class="md:text-lg py-1 mx-auto">{{ result.title.substring(0, 15) +
-                                    '..'
-                                }}
-                                </h3>
-                                <v-rating v-if="!$vuetify.display.mobile" :model-value="Math.random() * (5 - 2) + 2" hover
-                                    half-increments density="compact" size="small" color="blue-lighten-1"></v-rating>
-                                <p class="" v-if="$vuetify.display.mobile"><v-icon icon="mdi-star" size="x-small"
-                                        class="my-auto"></v-icon>
-                                    {{
+                            <div class="mx-auto" style="width: 11rem;">
+                                <div v-if="result.title" class="vshow">
+                                    <h3 v-if="result.title.length < 16" class="md:text-lg py-1 mx-1">{{
+                    result.title
+                }}
+                                    </h3>
+                                    <h3 v-else class="md:text-lg py-1 mx-1">{{ result.title.substring(0, 15) +
+                    '..'
+                                        }}
+                                    </h3>
+                                    <v-rating v-if="!$vuetify.display.mobile" :model-value="Math.random() * (5 - 2) + 2"
+                                        hover half-increments density="compact" size="small"
+                                        color="blue-lighten-1"></v-rating>
+                                    <p class="" v-if="$vuetify.display.mobile"><v-icon icon="mdi-star" size="x-small"
+                                            class="my-auto"></v-icon>
+                                        {{
+                    result.vote_average.toFixed(1)
+                }}</p>
+                                    <p v-if="result.title" class="opacity-70 text-sm mx-1">Released<br> {{
+                    result.release_date }}</p>
+                                    <h3 v-if="result.original_name" class="font-semibold md:text-lg px-4 mt-2 mx-auto">
+                                        {{
+                    result.original_name }}</h3>
+                                </div>
+                                <div v-if="result.name" class="vshowtv mx-1">
+                                    <h3 class="font-semibold md:text-lg py-1 mx-auto">{{ result.name.slice(0, 16) }}
+                                    </h3>
+                                    <p class="opacity-70 text-sm mx-auto">Release Date:<br> {{ result.first_air_date }}
+                                    </p>
+                                    <v-rating v-if="!$vuetify.display.mobile" :model-value="Math.random() * (5 - 2) + 2"
+                                        hover half-increments density="compact" size="small"
+                                        color="blue-lighten-1"></v-rating>
+                                    <p class="" v-if="$vuetify.display.mobile"><v-icon icon="mdi-star" size="x-small"
+                                            class="my-auto"></v-icon>
+                                        {{
                                         result.vote_average.toFixed(1)
-                                    }}</p>
-                                <p v-if="result.title" class="opacity-70 text-sm">Released<br> {{ result.release_date }}</p>
-                                <h3 v-if="result.original_name" class="font-semibold md:text-lg px-4 mt-2 mx-auto">{{
-                                    result.original_name }}</h3>
-                            </div>
-                            <div v-if="result.name" class="vshowtv">
-                                <h3 class="font-semibold md:text-lg p-3 mx-auto">{{ result.name.slice(0, 16) }}</h3>
-                                <p class="opacity-70 text-sm">Release Date:<br> {{ result.first_air_date }}</p>
-                                <v-rating v-if="!$vuetify.display.mobile" :model-value="Math.random() * (5 - 2) + 2" hover
-                                    half-increments density="compact" size="small" color="blue-lighten-1"></v-rating>
-                                <p class="" v-if="$vuetify.display.mobile"><v-icon icon="mdi-star" size="x-small"
-                                        class="my-auto"></v-icon>
-                                    {{
-                                        result.vote_average.toFixed(1)
-                                    }}</p>
+                                        }}</p>
+                                </div>
                             </div>
                         </router-link>
                     </div>
@@ -68,6 +77,7 @@
         </div>
     </transition>
 </template>
+
 <style>
 .poster {
     width: 20vh;
@@ -83,6 +93,7 @@
     gap: 2px;
 }
 </style>
+
 <script>
 export default {
     data() {

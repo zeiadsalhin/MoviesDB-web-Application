@@ -1,8 +1,8 @@
 <template>
     <div class="main mt-12">
         <div class="main px-5 text-2xl mt- -mb-5 flex">
-            <h1 class="my-auto">Top Rated Movies </h1>
-            <router-link :to="{ name: 'top', params: { id: 'movie', name: 'Top Rated Movies' } }"
+            <h1 class="my-auto">Upcoming Movies </h1>
+            <router-link :to="{ name: 'upcoming', params: { id: 'movie', name: 'Upcoming Movies' } }"
                 class="text-sm my-auto text-sky-400"><button class="p-3 my-auto">view all</button></router-link>
         </div>
         <!-- <v-lazy> -->
@@ -135,7 +135,7 @@ export default {
             };
 
             try {
-                const response = await fetch(`https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=${this.currentPage}`, options);
+                const response = await fetch(`https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=${this.currentPage}`, options);
                 const data = await response.json();
                 this.movies = [...this.movies, ...data.results];
                 this.totalPages = data.total_pages;
