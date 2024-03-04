@@ -140,6 +140,7 @@ const router = createRouter({
       component: () => import('../views/Favourites.vue'),
       meta: {
         delay: delay,
+        title: 'Discover Favourite Movies'
       },
     },
     {
