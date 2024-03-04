@@ -19,7 +19,7 @@ function reveal() {
                 <transition name="fade" mode="out-in">
                     <div :key="movie.id" v-if="movie">
                         <v-parallax id="par" :src="`https://image.tmdb.org/t/p/original${movie.backdrop_path}`"
-                            class="movie-item fade-in" gradient="to top, rgba(0, 0, 0, 2), rgba(0, 0, 0, 0.1)"
+                            class="movie-item fade-in" gradient="to top, rgba(0, 0, 0, 2), rgba(0, 0, 0, 0.2)"
                             style=""></v-parallax>
                     </div>
                 </transition>
