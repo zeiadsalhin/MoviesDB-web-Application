@@ -8,8 +8,8 @@
                     </div>
                     <div class="scrollh overflow-hidden p-3">
                         <div class="images">
-                            <v-overlay dark="true" v-model="overlay" class="flex justify-center"
-                                style="width: 100%; height: 100vh;background-color: rgba(0, 0, 0, 40%);">
+                            <v-overlay close-delay="0" dark="true" v-model="overlay" class="flex justify-center"
+                                style="width: 100%; height: 100vh;">
                                 <div class="flex justify-center my-auto w-screen"
                                     style="width: 23rem;transform: translateY(50%);">
                                     <div id="player" class="flex justify-center bg-zinc-950">
