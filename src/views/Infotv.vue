@@ -21,7 +21,7 @@ function reveal() {
                     <div :key="movie.id" v-if="movie">
                         <v-parallax id="par" :src="`https://image.tmdb.org/t/p/original${movie.backdrop_path}`"
                             class="movie-item fade-in" gradient="to top, rgba(0, 0, 0, 2), rgba(0, 0, 0, 0.2)"
-                            style=""></v-parallax>
+                            width="100%"></v-parallax>
                     </div>
                 </transition>
                 <transition name="slide-fade" appear>
@@ -66,20 +66,6 @@ function reveal() {
                             <p>Last release</p>
                             <p class="opacity-80">{{ movie.last_air_date }}</p>
                         </div>
-                        <!-- <div class="duration flex space-x-10">
-                            <p>Duration</p>
-                            <p class="opacity-80">{{ movie.runtime }} min</p>
-                        </div>
-                        <div class="duration flex space-x-10">
-                            <p>Budget</p>
-                            <p class="opacity-80">${{ movie.budget.toLocaleString(undefined, { maximumFractionDigits: 2 })
-                            }}</p>
-                        </div>
-                        <div class="duration flex space-x-7">
-                            <p>Revenue</p>
-                            <p class="opacity-80">${{ movie.revenue.toLocaleString(undefined, { maximumFractionDigits: 2 })
-                            }}</p>
-                        </div> -->
                         <div class="duration flex space-x-10">
                             <div class="g">
                                 <p>Genre</p>
