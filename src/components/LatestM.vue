@@ -46,25 +46,6 @@
 </template>
 
 <style scoped>
-::-webkit-scrollbar {
-    display: none;
-}
-
-.scroll-container {
-    /* position: relative; */
-    width: 100%;
-    height: 65vh;
-    display: flex;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    white-space: nowrap;
-}
-
-.movie-list {
-    display: flex;
-    padding: 20px;
-}
-
 .movie-item {
     display: inline-block;
     text-align: center;
@@ -73,33 +54,6 @@
 
 .poster {
     width: 25vh;
-    /* height: 100%; */
-    padding: 0.1rem;
-    height: fit-content;
-}
-
-.scroll-button {
-    position: sticky;
-    z-index: 999;
-    top: 50%;
-    transform: translateY(-10%);
-    width: 20%;
-    height: 100%;
-    margin-top: auto;
-    margin-bottom: auto;
-    background-color: rgba(0, 0, 0, 0.447);
-    border: none;
-    /* border-radius: 50%; */
-    font-size: 1.8rem;
-    cursor: pointer;
-}
-
-.scroll-button.left {
-    left: 0px;
-}
-
-.scroll-button.right {
-    right: 0px;
 }
 </style>
 

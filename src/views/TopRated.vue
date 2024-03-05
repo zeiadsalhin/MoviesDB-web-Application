@@ -78,22 +78,6 @@
     </transition>
 </template>
 
-<style>
-.poster {
-    width: 20vh;
-    height: 100%;
-    padding: 0.1rem;
-    height: fit-content;
-}
-
-.movie-row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2px;
-}
-</style>
-
 <script>
 export default {
     data() {

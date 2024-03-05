@@ -56,44 +56,6 @@
     </div>
 </template>
 
-<style>
-.poster {
-    width: 20vh;
-    height: 100%;
-    padding: 0.1rem;
-    height: fit-content;
-}
-
-.movie-row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 5px;
-}
-
-.search-bar {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-.clear-button {
-    position: absolute;
-    right: 0.5rem;
-    top: 50%;
-    transform: translateY(-50%);
-    background: transparent;
-    border: none;
-    outline: none;
-    cursor: pointer;
-}
-
-.clear-button svg {
-    width: 3rem;
-    height: 1.8rem;
-}
-</style>
-
 <script>
 export default {
     data() {

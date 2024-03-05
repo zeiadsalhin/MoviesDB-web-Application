@@ -19,8 +19,9 @@ import TopRTV from "../components/TopRTV.vue"
 
 <template>
     <div v-if="isloading" class=""
-        style="height: 100vh;width: 100%; background-color: black; position: a1bsolute; z-index: 999;">
-        <div class="load m-auto" style="position: re1lative;top: 50%;transform: translateX(50%);overflow: hidden;">
+        style="height: 100vh;width: 100%; background-color: black; position: absolute; z-index: 999;">
+        <div class="load m-auto"
+            style="position: absolute;top: 50%;left: 50%; transform: translateX(-60%);overflow: hidden;">
             <v-progress-circular indeterminate></v-progress-circular>
         </div>
     </div>
@@ -85,7 +86,9 @@ export default {
         }
     },
     mounted() {
-        this.isloading = false
+        setTimeout(() => {
+            this.isloading = false
+        }, 800);
     },
 }
 </script>

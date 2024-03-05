@@ -7,13 +7,13 @@
             <div class="text text-3xl font-medium p-5">
                 <h1>Cast</h1>
             </div>
-            <div v-if="movieCredits != null" class="scroll-container" ref="scrollContainer">
+            <div v-if="movieCredits != null" class="scroll-container h-full mb-4" ref="scrollContainer">
                 <button class="scroll-button left" @click="scrollLeft" v-show="scrollLeftButtonVisible"
                     v-if="!$vuetify.display.mobile">
                     <v-icon icon="mdi-chevron-left"></v-icon>
                 </button>
                 <div class="movie-list" ref="movieList">
-                    <div v-for="person in movieCredits.cast" :key="person.id" class="person p-2">
+                    <div v-for="person in movieCredits.cast" :key="person.id" class="person p-2 h-fit">
                         <div class="imagecover" style=" width: 20vh;height: 100%;margin: 0.1rem;height: fit-content;">
                             <v-img v-if="person.profile_path"
                                 :src="'https://image.tmdb.org/t/p/w154' + person.profile_path" alt="Person" width="100%"
@@ -37,22 +37,7 @@
 </template>
 
 <style scoped>
-::-webkit-scrollbar {
-    display: none;
-}
-
-.scroll-container {
-    /* position: relative; */
-    width: 100%;
-    height: 50vh;
-    display: flex;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    white-space: nowrap;
-}
-
 .movie-list {
-    display: flex;
     padding: 0px;
 }
 
@@ -60,37 +45,6 @@
     display: inline-block;
     text-align: center;
     margin-right: 0px;
-}
-
-/* .poster {
-    width: 22vh;
-    height: 100%;
-    padding: 0.1rem;
-    height: fit-content;
-} */
-
-.scroll-button {
-    position: sticky;
-    z-index: 999;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 20%;
-    height: 100px;
-    margin-top: auto;
-    margin-bottom: auto;
-    background-color: rgba(0, 0, 0, 0.447);
-    border: none;
-    /* border-radius: 50%; */
-    font-size: 1.8rem;
-    cursor: pointer;
-}
-
-.scroll-button.left {
-    left: 0px;
-}
-
-.scroll-button.right {
-    right: 0px;
 }
 </style>
 

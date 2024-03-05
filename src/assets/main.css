@@ -30,3 +30,150 @@ a,
     padding: 0 2rem; */
   }
 }
+
+
+html,
+body {
+  overflow: hidden;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+
+.slide-fade-enter-active {
+  transition: all 1s ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.8s ease-in-out;
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateY(20px);
+  opacity: 0;
+}
+
+.movie-item {
+
+  width: 100%;
+  height: 75vh;
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: multiply;
+  /* Add other desired styles */
+}
+
+#par .v-parallax__content {
+  background: linear-gradient(45deg, black, transparent);
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeInAnimation 2s ease forwards;
+}
+
+@keyframes fadeInAnimation {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 1s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.poster {
+  /* width: 20vh; */
+  height: 100%;
+  padding: 0.1rem;
+  height: fit-content;
+}
+
+.movie-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
+}
+
+.search-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.clear-button {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.clear-button svg {
+  width: 3rem;
+  height: 1.8rem;
+}
+
+.v-enter-active,
+.v-leave-active {
+    transition: opacity 3s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+    opacity: 0;
+}
+
+.scroll-container {
+  /* position: relative; */
+  width: 100%;
+  height: 65vh;
+  display: flex;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+.movie-list {
+  display: flex;
+  padding: 20px;
+}
+
+.scroll-button {
+  position: sticky;
+  z-index: 999;
+  top: 50%;
+  transform: translateY(-10%);
+  width: 20%;
+  height: 100%;
+  margin-top: auto;
+  margin-bottom: auto;
+  background-color: rgba(0, 0, 0, 0.447);
+  border: none;
+  /* border-radius: 50%; */
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+.scroll-button.left {
+  left: 0px;
+}
+
+.scroll-button.right {
+  right: 0px;
+}

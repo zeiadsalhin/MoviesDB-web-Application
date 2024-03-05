@@ -143,14 +143,6 @@ const router = createRouter({
         title: 'Discover Favourite Movies'
       },
     },
-    {
-      path: '/list',
-      name: 'list',
-      component: () => import('../views/List.vue'),
-      meta: {
-        delay: delay,
-      },
-    },
   ],
   scrollBehavior(to, from, savedPosition) {
     return { top: 0 }

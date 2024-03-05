@@ -1,6 +1,4 @@
 <script setup>
-// import TheWelcome from '../components/TheWelcome.vue'
-// import banner from '../components/Banner.vue'
 import latest from "../components/LatestM.vue"
 import latest2 from "../components/LatestTV.vue"
 import trending from "../components/Trending.vue"
@@ -11,7 +9,8 @@ import trendingtv from "../components/Trendingtv.vue"
   <main>
     <div v-if="isloading" class=""
       style="height: 100vh;width: 100%; background-color: black; position: absolute; z-index: 999;">
-      <div class="load m-auto" style="position: relative;top: 50%;transform: translateX(50%);overflow: hidden;">
+      <div class="load m-auto"
+        style="position: absolute;top: 50%;left: 50%; transform: translateX(-60%);overflow: hidden;">
         <v-progress-circular indeterminate></v-progress-circular>
       </div>
     </div>
@@ -50,9 +49,6 @@ import trendingtv from "../components/Trendingtv.vue"
                 300) }}...</p>
             </div>
           </transition>
-          <!-- Display other movie information here -->
-
-
         </div>
       </div>
       <transition name="fade" mode="out-in">
@@ -104,7 +100,6 @@ export default {
         const randomIndex = Math.floor(Math.random() * this.Results.length);
         this.randomMovie = this.Results[randomIndex];
         this.isloading = false
-        // console.log(this.Results)
       } catch (error) {
         console.error(error);
       }
@@ -113,63 +108,3 @@ export default {
   }
 }
 </script>
-
-<style>
-html,
-body {
-  overflow: hidden;
-}
-
-.slide-fade-enter-active {
-  transition: all 1s ease-out;
-}
-
-.slide-fade-leave-active {
-  transition: all 0.8s ease-in-out;
-}
-
-.slide-fade-enter-from,
-.slide-fade-leave-to {
-  transform: translateY(20px);
-  opacity: 0;
-}
-
-.movie-item {
-
-  width: 100%;
-  height: 75vh;
-  background-position: center;
-  background-size: cover;
-  background-blend-mode: multiply;
-  /* Add other desired styles */
-}
-
-#par .v-parallax__content {
-  background: linear-gradient(45deg, black, transparent);
-}
-
-.fade-in {
-  opacity: 0;
-  animation: fadeInAnimation 2s ease forwards;
-}
-
-@keyframes fadeInAnimation {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 1s;
-}
-
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
-}
-</style>

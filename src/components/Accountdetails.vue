@@ -1,14 +1,15 @@
 <script setup>
 
 </script>
+
 <template>
     <div class="about p-1 md:p-10 mt-20 flex-col justify-center h-fit bg-zinc-950 text-white reveal1">
         <h1 class="text-2xl md:text-4xl text-white text-center font-bold p-2">My Account</h1>
         <div class="w-1/4 h-1 mt-5 rounded-xl mx-auto bg-zinc-700 "></div>
         <div class="bg-zinc-950 mt-5 w-fit mx-auto">
             <div v-if="Emailinfo" id="loader" class="w-28 mx-auto h-22">
-                <v-img id="profile" :src="avatarsrc" v-on:error="src = '/error.svg'" class="mx-auto opacity-100 bg-white"
-                    width="100%" height="100%" alt="user"></v-img>
+                <v-img id="profile" :src="avatarsrc" v-on:error="src = '/error.svg'"
+                    class="mx-auto opacity-100 bg-white" width="100%" height="100%" alt="user"></v-img>
             </div>
             <div v-else class=""><v-progress-circular indeterminate></v-progress-circular></div>
 
@@ -44,8 +45,10 @@
             <p class="p-2 text-md md:text-lg text-zinc-400">Powered by <a href="https://www.themoviedb.org/"
                     title="The movie database">TMDB</a> API</p>
         </div>
+        <router-link to="/about" class="p-2 m-2 flex justify-center mx-auto bg-zinc-900 w-1/2">About</router-link>
     </div>
 </template>
+
 <script>
 export default {
     data() {
