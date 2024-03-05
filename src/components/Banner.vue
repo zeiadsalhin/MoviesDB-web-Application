@@ -33,12 +33,8 @@
                         300) }}...</p>
                 </div>
             </transition>
-            <!-- Display other movie information here -->
-
-
         </div>
     </div>
-    <!-- <button @click="random">Get</button> -->
 </template>
 
 <script>
